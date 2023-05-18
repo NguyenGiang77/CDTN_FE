@@ -14,9 +14,7 @@ class ModalUser extends Component {
             firstName: '',
             lastName: '',
             address: '',
-            phoneNumber: '',
-            gender: '',
-            roleId: ''         
+            
         }
         this.listenToEmitter();
 
@@ -29,10 +27,7 @@ class ModalUser extends Component {
                 password: '',
                 firstName: '',
                 lastName: '',
-                address: '',  
-                phoneNumber: '',
-                gender: '',
-                roleId: ''
+                address: '',                
             })
         })
     }

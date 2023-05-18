@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { push } from "connected-react-router";
-
+import logo from '../../assets/images/backgroud.png';
 import * as actions from "../../store/actions";
 
 import './Login.scss';
@@ -64,6 +64,7 @@ class Login extends Component {
     render() {
         return (
             <div className="login-background">
+                <img src={logo} className="logo" alt=''></img>
                 <div className="login-container">
                     <div className="login-content row">
                         <div className="col-12 text-login">Login</div>
@@ -87,18 +88,18 @@ class Login extends Component {
                         <div className='col-12' style ={{color:'red'}}>
                             {this.state.errMessage}
                         </div>
+                         <div className = "col-12">
+                            <span className="forgot-password">Forgot your password?</span>
+                        </div>                       
                         <div className="col-12" >
                             <button className="btn-login" onClick={() => this.handleLogin()}>Login</button>
                         </div>
-                        
-                        <div className = "col-12">
-                            <span className="forgot-password">Forgot your password?</span>
-                        </div>
+                    
                         <div className="col-12 text-center mt-3">
                             <span className="text-other-login">Login with:</span>
                         </div>
                         <div className="col-12 social-login">
-                            <i className="fab fa-google google"></i>
+                            <i className="fab fa-google-plus-g google"></i>
                             <i className="fab fa-facebook-f facebook"></i>
 
                         </div>
