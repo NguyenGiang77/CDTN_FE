@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManage.scss';
-import { getAllUsers, createrNewUserFromReact, deleteUserService } from '../../services/userService';
+import { getAllUsers, createrNewUserFromReact, deleteUserService, editUserService } from '../../services/userService';
 import ModalUser from './ModalUser';
 import ModalEditUser from './ModalEditUser';
 import ModalDeleteUser from './ModalDeleteUser';
-import {emitter} from '../../utils/emitter';
+import { emitter } from '../../utils/emitter';
+
 class UserManage extends Component {
 
     constructor(props) {
@@ -15,7 +16,10 @@ class UserManage extends Component {
             arrUsers: [],
             isOpenModalUser: false,
             isOpenEditUser: false,
-            userEdit: {}
+            isOpenDeleteUser: false,
+            userEdit: {},
+            userDelete: {},
+
         };
     }
 
@@ -51,6 +55,11 @@ class UserManage extends Component {
             isOpenEditUser: !this.state.isOpenEditUser,
         })
     }
+    toggleDeleteUserModal = () => {
+        this.setState({
+            isOpenDeleteUser: !this.state.isOpenDeleteUser,
+        })
+    }
     createNewUser = async (data) => { 
         try {
             let reponse = await createrNewUserFromReact(data);
@@ -77,26 +86,56 @@ class UserManage extends Component {
      * 3. Render // đưa ra màn hình re-render: render ra nhiều lần
      * state có nhiệm vụ lưu trữ giá trị 
      */
-    handleDeleteUserFE = async(user) => {
+    handleDeleteUserFE = (user) => { 
+        this.setState({
+            isOpenDeleteUser: true,
+            userDelete:user
+        })
+    }
+
+    doDeleteUser = async(user) => {
         try {
             let res = await deleteUserService(user.id);
             if (res && res.errCode === 0) {
+                this.setState({
+                    isOpenDeleteUser: false
+                });
                 await this.getAllUserFromReact();
             }
             else {
                 alert(res.errMessage);
             }
-            console.log(res);
         } catch (e) { 
             console.log(e);
         }
     }
-
+// click vào button Edit thì sẽ mở lên modal edit
     handleEditUser = (user) => {
+        console.log('check edit user', user);
         this.setState({
             isOpenEditUser: true,
             userEdit: user
         })
+    }
+    doEditUser = async (user) => { 
+        
+        try {
+            let res = await editUserService(user);
+            if (res && res.errCode === 0)
+            {
+                this.setState({
+                    isOpenEditUser:false,
+                });
+                await this.getAllUserFromReact()
+            }
+            else {
+                alert(res.errCode)
+            }
+        } catch (e) {
+            console.log(e);
+        }
+
+        
     }
     render() {
         // console.log('check render', this.state);
@@ -116,10 +155,20 @@ class UserManage extends Component {
                         isOpen={this.state.isOpenEditUser}
                         toggerFromParent={this.toggleEditUserModal}
                         currentUser={this.state.userEdit}
+                        editUserReact={this.doEditUser}
                    
                     />
                 }
-                <ModalDeleteUser />
+                {this.state.isOpenDeleteUser &&
+                    <ModalDeleteUser
+                        isOpen={this.state.isOpenDeleteUser}
+                        toggerFromParent={this.toggleDeleteUserModal}
+                        DeleteUser={this.state.userDelete}
+                        DeleteUserReact={this.doDeleteUser}
+                    />
+                    
+                }
+                
                 
                 <div className='title text-center'>Manage user with Hospital</div>
                 <div className='mx-1'>
