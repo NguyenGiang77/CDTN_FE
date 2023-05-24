@@ -1,4 +1,26 @@
 {
+    "home-header": {
+        "specialty": "Specialty",
+        "infor":"Find a doctor by specialty",
+        "hospital": "Health facilities",
+        "choose-hospital": "Choose a hospital, clinic",
+        "doctor":"Doctor",
+        "choose-doctor": "Choose a good doctor",
+        "medical": "Medical package",
+        "choose-medical": "Choose a medical package",
+        "help": "Help",
+        "search": "Search"
+    },
+    "banner": {
+        "title1": "MEDICAL PLATFORM",
+        "title2": "EVERYONE'S HEALTH CARE",
+        "specialty": "Specialist examination",
+        "faraway": "Remote examination",
+        "generality": "General examination",
+        "test": "Medical test",
+        "nerve": "Mental health check",
+        "dental": "Dental examination" 
+    },
     "common": {
         "add": "Add",
         "edit": "Edit",
