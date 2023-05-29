@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './HomeHeader.scss';
-import logo from '../../assets/images/bookingcare.svg'
+// import logo from '../../assets/images/bookingcare.svg'
 import { FormattedMessage } from 'react-intl';
 import { LANGUAGES } from '../../utils/constant';
 import {changeLanguageApp} from '../../store/actions'
@@ -82,7 +82,7 @@ class HomeHeader extends Component {
                             </div>
                             <div className='options-specialist'>
                                 <div className='icon-child'>
-                                    <i class="fas fa-flask"></i>
+                                    <i className="fas fa-flask"></i>
                                 </div>
                                 <div className='text-child'><b><FormattedMessage id="banner.test"/></b></div>
                             </div>
@@ -94,7 +94,7 @@ class HomeHeader extends Component {
                             </div>
                             <div className='options-specialist'>
                                 <div className='icon-child'>
-                                    <i class="fas fa-stethoscope"></i>
+                                    <i className="fas fa-stethoscope"></i>
                                 </div>
                                 <div className='text-child'><b><FormattedMessage id="banner.dental"/></b></div>
                             </div>
@@ -110,6 +110,7 @@ class HomeHeader extends Component {
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
+        UserInfo: state.user.UserInfo,
         language: state.app.language,
     };
 };
