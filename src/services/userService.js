@@ -21,14 +21,20 @@ const deleteUserService = (userId) => {
     });
 
 }
+
 const editUserService = (inputdata) => { 
     return axios.put('/api/edit-user', inputdata);
 }
 const getAllCodeService = (inputtype) => { 
     return axios.get(`/api/allcode?type=${inputtype}`)
 }
+
+const getTopDoctorService = (limit) => { 
+    return axios.get(`/api/top-doctor?limit=${limit}`) 
+}
 export {
     handleLoginApi, getAllUsers,
     createrNewUserFromReact, deleteUserService,
-    editUserService,getAllCodeService
+    editUserService, getAllCodeService,
+    getTopDoctorService
 }

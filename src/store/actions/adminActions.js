@@ -1,9 +1,14 @@
 import actionTypes from './actionTypes';
-import { getAllCodeService, createrNewUserFromReact } from '../../services/userService';
+import {
+    getAllCodeService, createrNewUserFromReact,
+    getAllUsers, deleteUserService, editUserService, getTopDoctorService
 
+} from '../../services/userService';
+import {toast} from 'react-toastify'
 // export const  fetchGenderStart = () => ({
 //     type: actionTypes.FETCH_GENDER_START,
 // })
+//LẤY BIẾN GENDER TỪ BE
 export const fetchGenderStart = () => {
     return async (dispatch, getState /*hai tham so cua redux*/) => {
         try {
@@ -30,6 +35,7 @@ export const  fetchGenderFail = () => ({
     type: actionTypes.FETCH_GENDER_FAIL,
 })
 
+// LẤY BIẾN ROLE TỪ BE
 export const fetchRoleStart = () => {
     return async (dispatch, getState /*hai tham so cua redux*/) => {
         try {
@@ -54,6 +60,7 @@ export const  fetchRoleFail = () => ({
     type: actionTypes.FETCH_ROLE_FAIL,
 })
 
+// LẤY BIẾN POSITION TỪ BE
 export const fetchPositionStart = () => {
     return async (dispatch, getState /*hai tham so cua redux*/) => {
         try {
@@ -75,16 +82,20 @@ export const  fetchPositionSuccess = (positionData) => ({
 })
 export const fetchPositionFail = () => ({
     type: actionTypes.FETCH_POSITION_FAIL,
-})
+}) 
+
+// TẠO USER CỦA TAB CRUB REDUX
 export const createUser = (data) => {
     return async (dispatch, getState /*hai tham so cua redux*/) => {
         try {
             let res = await createrNewUserFromReact(data);
-            console.log('check create',res);
             if (res && res.errCode === 0) {
+                toast.success('Create user succesd');
                 dispatch(createUserSuccess());
+                dispatch(fetchAllUserStart());
             }
             else {
+                toast.error("Delete user failed");
                 dispatch(createUserFail());
             }
         } catch (e) {
@@ -95,9 +106,116 @@ export const createUser = (data) => {
 }
 
 export const createUserSuccess = () => ({ 
-    type: 'CREATE_USER_SUCCESS'
+    type: actionTypes.CREATE_USER_SUCCESS
 
 })
 export const createUserFail = () => ({ 
-    type: 'CREATE_USER_FAIL'
+    type: actionTypes.CREATE_USER_FAIL
 })
+
+// HIỂN KHI TẤT CẢ USER CỦA TAB CRUB REDUX
+export const fetchAllUserStart = () => {
+    return async (dispatch, getState /*hai tham so cua redux*/) => {
+        try {
+            let res = await getAllUsers("ALL");
+            if (res && res.errCode === 0) {
+                dispatch(fetchAllUserSuccess(res.users.reverse()));
+            }
+            else {
+                dispatch(fetchAllUserFail());
+            }
+        } catch (e) {
+            dispatch(fetchAllUserFail());
+            console.log(e);
+        }
+    }
+}
+export const  fetchAllUserSuccess = (data) => ({
+    type: actionTypes.FETCH_ALL_USER_SUCCESS,
+    users: data,
+})
+export const fetchAllUserFail = () => ({
+    type: actionTypes.FETCH_ALL_USER_FAIL,
+})
+// XÓA USER CỦA TAB CRUB REDUX
+export const deleteUserStart = (userId) => {
+    return async (dispatch, getState /*hai tham so cua redux*/) => {
+        try {
+            let res = await deleteUserService(userId);
+            if (res && res.errCode === 0) {
+                toast.success('Delete user succesd');
+                dispatch(deleteUserSuccess());
+                dispatch(fetchAllUserStart());
+            }
+            else {
+                toast.error("Delete user failed");
+                dispatch(deleteUserFail());
+            }
+        } catch (e) {
+            dispatch(deleteUserFail());
+            console.log(e);
+        }
+    }
+}
+
+export const deleteUserSuccess = () => ({ 
+    type: actionTypes.DELETE_USER_SUCCESS
+
+})
+export const deleteUserFail = () => ({ 
+    type: actionTypes.DELETE_USER_FAIL
+})
+
+export const editUserStart = (data) => {
+    return async (dispatch, getState /*hai tham so cua redux*/) => {
+        try {
+            let res = await editUserService(data);
+            if (res && res.errCode === 0) {
+                toast.success('Update user succesd');
+                dispatch(editUserSuccess());
+                dispatch(fetchAllUserStart());
+            }
+            else {
+                toast.error("Edit user failed");
+                dispatch(editUserFail());
+            }
+        } catch (e) {
+            toast.error("Edit user failed");
+            dispatch(editUserFail());
+            console.log(e);
+        }
+    }
+}
+
+export const editUserSuccess = () => ({ 
+    type: actionTypes.EDIT_USER_SUCCESS
+
+})
+export const editUserFail = () => ({ 
+    type: actionTypes.EDIT_USER_FAIL
+})
+
+export const fetchTopDoctor = () => {
+    return async (dispatch, getState /*hai tham so cua redux*/) => {
+        try {
+            let res = await getTopDoctorService('8');
+            if (res && res.errCode === 0) {
+                dispatch ({
+                    type: actionTypes.FETCH_TOP_DOCTOR_SUCCESS,
+                    dataDoctor: res.data,
+                })
+            }
+            else {
+                dispatch({
+                    type: actionTypes.FETCH_TOP_DOCTOR_FAIL,
+
+                })
+            }
+        } catch (e) {
+            console.log(e)
+            dispatch({
+                type: actionTypes.FETCH_TOP_DOCTOR_FAIL,
+            })
+        }
+    }    
+}

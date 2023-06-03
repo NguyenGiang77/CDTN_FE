@@ -17,37 +17,38 @@ class HomeHeader extends Component {
             <React.Fragment>
                 <div className='home-header-container'>
                     <div className='home-header-content'>
-                        <div className='left-content'>
-                            <div className='left-content-child'>
-                                <i className="fas solid fa-bars"></i>
-                                <div className='image logo-home'></div>
+                        <div className='left'>
+                            <div className='left-content'>
+                                <div className='left-content-child'>
+                                    <i className="fas solid fa-bars"></i>
+                                    <div className='image logo-home'></div>
+                                </div>
                             </div>
-                        </div>
-                        <div className='center-content'>
-                            <div className='home-children'>
-                                <div><b><FormattedMessage id="home-header.specialty"/></b></div>
-                                <div className='subs-title'><FormattedMessage id="home-header.infor"/></div>
-                            </div>
-                            <div className='home-children'>
-                                <div><b><FormattedMessage id="home-header.hospital"/></b></div>
-                                <div className='subs-title'><FormattedMessage id="home-header.choose-hospital"/></div>
-                            </div>
-                            <div className='home-children'>
-                                <div><b><FormattedMessage id="home-header.doctor"/></b></div>
-                                <div className='subs-title'><FormattedMessage id="home-header.choose-doctor"/></div>
-                            </div>
-                            <div className='home-children'>
-                                <div><b><FormattedMessage id="home-header.medical"/></b></div>
-                                <div className='subs-title'><FormattedMessage id="home-header.choose-medical"/></div>
-                            </div>
+                            <ul className='center-content'>
+                                <li className='home-children'>
+                                    <div><b><FormattedMessage id="home-header.specialty"/></b></div>
+                                    <div className='subs-title'><FormattedMessage id="home-header.infor"/></div>
+                                </li>
+                                <li className='home-children'>
+                                    <div><b><FormattedMessage id="home-header.hospital"/></b></div>
+                                    <div className='subs-title'><FormattedMessage id="home-header.choose-hospital"/></div>
+                                </li>
+                                <li className='home-children'>
+                                    <div><b><FormattedMessage id="home-header.doctor"/></b></div>
+                                    <div className='subs-title'><FormattedMessage id="home-header.choose-doctor"/></div>
+                                </li>
+                                <li className='home-children'>
+                                    <div><b><FormattedMessage id="home-header.medical"/></b></div>
+                                    <div className='subs-title'><FormattedMessage id="home-header.choose-medical"/></div>
+                                </li>
+                            </ul>
                         </div>
                         <div className='right-content'>
                             <div className='help-home'>
                                 <i className="fas fa-question-circle"></i>
-                                <FormattedMessage id="home-header.help"/>
                             </div>
-                            <div className={language === LANGUAGES.VI ? 'language-vi active': 'language-vi'}><span onClick={()=> this.changeLanguage(LANGUAGES.VI)}>Vietnamese</span></div>
-                            <div className={language === LANGUAGES.EN ? 'language-en active': 'language-en'}><span onClick={()=> this.changeLanguage(LANGUAGES.EN)}>English</span></div>
+                            <div className={language === LANGUAGES.VI ? 'language-vi active': 'language-vi'}><span onClick={()=> this.changeLanguage(LANGUAGES.VI)}>VN</span></div>
+                            <div className={language === LANGUAGES.EN ? 'language-en active': 'language-en'}><span onClick={()=> this.changeLanguage(LANGUAGES.EN)}>EN</span></div>
                         </div>
                     </div>
                 </div>
