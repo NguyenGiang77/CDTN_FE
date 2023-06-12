@@ -36,7 +36,12 @@
             "manage-specialty": "Manage specialty",
             "handbook": "Handbook",
             "manage-handbook": "Manage handbook"
+        },
+        "doctor": {
+            "schedule": "Manage Doctor's schedule"
+
         }
+        
     },
     "manage-user": {
         "add": "Add a new user",
@@ -52,6 +57,15 @@
         "image": "Avatar",
         "save": "Save",
         "edit": "Save changes"
+    },
+    "homepage": {
+        "doctor": "Last week's featured doctor",
+        "More": "See more"
+    },
+    "manage-schedule": {
+        "title": "Quản lý kế hoạch khám bệnh của bác sĩ",
+        "choose-doctor": "Choose a doctor",
+        "choose-date": "Choose date",
+        "Save" : "Save"
     }
-
 }

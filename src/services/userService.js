@@ -9,7 +9,6 @@ const getAllUsers = (inputId) =>
 }
 const createrNewUserFromReact = (data) =>
 {
-    console.log('check data from service',data);
     return axios.post('/api/create-new-user', data);
 }
 
@@ -32,9 +31,26 @@ const getAllCodeService = (inputtype) => {
 const getTopDoctorService = (limit) => { 
     return axios.get(`/api/top-doctor?limit=${limit}`) 
 }
+
+const getAllDoctorService = () => { 
+    return axios.get(`/api/all-doctor`) 
+}
+
+const postInfoDoctors = (data) => {
+    return axios.post(`/api/save-infor-doctor`, data)  
+}
+const getInforDoctor = (inputId) => { 
+    return axios.get(`/api/get-doctor-by-id?id=${inputId}`) 
+
+}
+const saveBulkScheduleDoctor = (data) => { 
+    return axios.post(`/api/bulk-create-schedule`, data) 
+
+}
 export {
     handleLoginApi, getAllUsers,
     createrNewUserFromReact, deleteUserService,
     editUserService, getAllCodeService,
-    getTopDoctorService
+    getTopDoctorService, getAllDoctorService,
+    postInfoDoctors, getInforDoctor,saveBulkScheduleDoctor
 }

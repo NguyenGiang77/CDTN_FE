@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+// import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { LANGUAGES } from '../../../utils';
 import * as actions from '../../../store/actions';
+import { FormattedMessage } from 'react-intl';
 class Doctor extends Component {
+    // history = useHistory();
     constructor(props) { 
         super(props);
         this.state = {
@@ -22,19 +26,25 @@ class Doctor extends Component {
     componentDidMount() { 
         this.props.loadTopDoctor();
     }
+    handleViewInforDoctor = (doctor) => { 
+        this.props.history.push(`/infor-doctor/${doctor.id}`);
+    }
     render() {
-        console.log(this.props.topDoctorRedux)
         let { language } = this.props;
         // let settings = this.props.settings
         let arrDoctor = this.state.arrDoctor;
-        arrDoctor = arrDoctor.concat(arrDoctor).concat(arrDoctor)
+        //arrDoctor = arrDoctor.concat(arrDoctor).concat(arrDoctor)
         
         return (
             <div className='section-share section-doctor'>
                 <div className='section-content'>
                     <div className='section-header'>
-                        <span className='title-section'>Bác sĩ nổi tiếng</span>
-                        <button className='btn-section'>Xem thêm</button>
+                        <span className='title-section'>
+                            <FormattedMessage id="homepage.doctor"></FormattedMessage>
+                        </span>
+                        <button className='btn-section'>
+                            <FormattedMessage id ="homepage.More"></FormattedMessage>
+                        </button>
                     </div>
                     <div className='section-body'>
                         <Slider {...this.props.settings} >
@@ -47,7 +57,9 @@ class Doctor extends Component {
                                     let nameVn = `${item.positionData.valueVN}, ${item.lastName} ${item.firstName}`;
                                     let nameEn = `${item.positionData.valueEN}, ${item.lastName} ${item.firstName}`;
                                 return (
-                                    <div className='section-customize' key = {index}>
+                                    <div className='section-customize' key={index}
+                                        onClick={() => this.handleViewInforDoctor(item) }
+                                    >
                                         <div className='customize-border'>
                                             <div className='outer-background'>
                                                 <div className='image section-doctor'
@@ -88,4 +100,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Doctor);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Doctor));

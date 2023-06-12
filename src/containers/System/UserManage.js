@@ -31,10 +31,7 @@ class UserManage extends Component {
         if (response && response.errCode === 0) {
             this.setState({
                 arrUsers: response.users
-                // }, () => {
-                //     console.log('check state user ', this.state.arrUsers);
-                // });
-                // console.log('check state user 1', this.state.arrUsers);
+                
             })
         }
     }
@@ -110,7 +107,6 @@ class UserManage extends Component {
     }
 // click vào button Edit thì sẽ mở lên modal edit
     handleEditUser = (user) => {
-        console.log('check edit user', user);
         this.setState({
             isOpenEditUser: true,
             userEdit: user
@@ -137,10 +133,8 @@ class UserManage extends Component {
         
     }
     render() {
-        // console.log('check render', this.state);
         
         let arrUsers = this.state.arrUsers;
-        console.log(arrUsers)
         //prop lấy dữ liệu từ các componet khác
         return (
             <div className='user-container'>
@@ -188,7 +182,6 @@ class UserManage extends Component {
                         </tr>
                             {
                                 arrUsers && arrUsers.map((item, index) => {
-                                    //console.log('Giang check map', item, index);
                                     return (
                                         <tr key = {index}>
                                             <td>{item.email}</td>

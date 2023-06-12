@@ -9,19 +9,22 @@ import './HomePage.scss';
 import Doctor from './Section/Doctor';
 import HomeFooter from './HomeFooter';
 class HomePage extends Component {
-
+    // handleAfterChange = (index, dontAnimate) => {
+    //     console.log(index);
+    // }
     render() {
         let settings = {
             dots: false,
-            infinite: true,
+            infinite: false,
             speed: 500,
             slidesToShow: 4,
-            slideToScroll:1
+            slideToScroll: 1,
+            // slickGoTo: this.handleAfterChange,
         }
         
         return (
             <div>
-                <HomeHeader />
+                <HomeHeader isShowBanner ={true} />
                 <Specialty settings = {settings} />
                 <Medical settings={settings} />
                 <Doctor settings = {settings} />
