@@ -147,7 +147,7 @@ class DatePicker extends Component {
             onOpen: this.onOpen
         };
         if (minDate) {
-            options.minDate = minDate;
+            options.minDate = minDate
         }
         return (
             <Flatpickr

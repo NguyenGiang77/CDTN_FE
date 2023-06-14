@@ -21,7 +21,8 @@
         "generality": "Khám tổng quát",
         "test": "Xét nghiệm y học",
         "nerve": "Khám sức khỏe tinh thần",
-        "dental": "Khám nha khoa" 
+        "dental": "Khám nha khoa",
+        "select": "Tìm kiếm bác sĩ" 
     }
 
     ,
@@ -67,7 +68,26 @@
         "title": "Manage doctor's examination plan"   ,
         "choose-doctor": "Chọn bác sĩ",
         "choose-date": "Chọn ngày",
-        "Save": "Lưu thông tin"
+        "Save": "Lưu thông tin",
+        "Message": "Bác sĩ không có lịch hẹn trong thời gian này, vui lòng chọn thời gian khác!",
+        "calendar": "Lịch khám",
+        "choose": "Chọn ",
+        "book": " và đặt (miễn phí)"
+
+    },
+    "manage-doctor": {
+        "title": "THÊM THÔNG TIN BÁC SĨ",
+        "choose-doctor": "Chọn bác sĩ",
+        "details": "Thông tin giới thiệu",
+        "save": "Lưu thông tin",
+        "choose-price": "Chọn giá",
+        "choose-province": "Chọn tỉnh thành",
+        "choose-payment": "Chọn phương thức thanh toán",
+        "nameclinic": "Tên phòng khám",
+        "addressclinic": "Địa chỉ phòng khám",
+        "note": "Ghi chú"
+
     }
+
 
 }

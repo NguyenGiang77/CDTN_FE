@@ -9,6 +9,7 @@ const initialState = {
     topDoctor: [],
     allDoctor: [],
     allScheduleDate: [],
+    allData: []
 }
 
 const adminReducer = (state = initialState, action) => {
@@ -90,6 +91,16 @@ const adminReducer = (state = initialState, action) => {
             }
         case actionTypes.FETCH_ALLCODE_SCHEDULE_DATE_FAIL:
             state.allScheduleDate = [];
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_INFOR_DOCTOR_SUCCESS:
+            state.allData = action.data;
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_INFOR_DOCTOR_PRICE_FAIL:
+            state.allData = [];
             return {
                 ...state,
             }

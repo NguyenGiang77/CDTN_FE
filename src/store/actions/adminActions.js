@@ -302,3 +302,39 @@ export const fetchAllcodeScheduleDate= () => {
     } 
 }
 
+// thông tin chi tiết bác sĩ
+export const getInforDoctor = () => {
+    return async (dispatch, getState /*hai tham so cua redux*/) => {
+        try {
+            dispatch({
+                type :actionTypes.FETCH_INFOR_DOCTOR_START
+            })
+            let resPrice = await getAllCodeService('PRICE');
+            let resPayment = await getAllCodeService('PAYMENT');
+            let resProvince = await getAllCodeService('PROVINCE');
+            if (resPrice && resPrice.errCode === 0 &&
+                resPayment && resPayment.errCode === 0 &&
+                resProvince && resProvince.errCode === 0)
+            {
+                let data = {
+                    resPrice: resPrice.data,
+                    resPayment: resPayment.data,
+                    resProvince: resProvince.data
+                }
+                dispatch(getInforDoctorSuccess(data));
+            }
+            else {
+                dispatch(getInforDoctorFail());
+            }
+        } catch (e) {
+            dispatch(getInforDoctorFail());
+        }
+    }
+}
+export const  getInforDoctorSuccess = (allData) => ({
+    type: actionTypes.FETCH_INFOR_DOCTOR_SUCCESS,
+    data: allData,
+})
+export const  getInforDoctorFail = () => ({
+    type: actionTypes.FETCH_INFOR_DOCTOR_PRICE_FAIL,
+})

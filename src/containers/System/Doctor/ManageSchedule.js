@@ -9,6 +9,7 @@ import { FormattedMessage } from 'react-intl';
 import { toast } from 'react-toastify'
 import _ from 'lodash';
 import { saveBulkScheduleDoctor } from '../../../services/userService';
+import moment from 'moment';
 class ManageSchedule extends Component {
     constructor(props) { 
         super(props);
@@ -113,11 +114,11 @@ class ManageSchedule extends Component {
 
 
                 })
-            toast.success("Success!")
+            // toast.success("Success!")
             }
                 
              else {
-                toast.error("Invalid selected time!")
+                // toast.error("Invalid selected time!")
                 return;
             }
         }
@@ -126,16 +127,21 @@ class ManageSchedule extends Component {
             doctorId: selectedDoctor.value,
             formatedDate: formatedDate,
 
+        })
+        if (res && res.errCode === 0)
+        {
+            toast.success("Success!")
         }
-            
-        )
-        console.log(res);
-        console.log(result)
+        else {
+            toast.error("Invalid selected time!")
+        }
+        
     }
     
     render() {
         let { rangTime } = this.state;
         let { language } = this.props;
+        let yesterday = new Date(new Date().setDate(new Date().getDate()-1));
         console.log(rangTime)
         return (
             <React.Fragment>
@@ -159,7 +165,7 @@ class ManageSchedule extends Component {
                                     onChange={this.handleChangeDate}
                                     className='form-control'
                                     value={this.state.date[0]}
-                                    minDate = {new Date()} // lấy gtri ngày hôm nay
+                                    minDate={yesterday} // lấy gtri ngày hôm nay
                                    
                             
                                 />

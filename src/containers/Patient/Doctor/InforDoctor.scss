@@ -30,14 +30,26 @@
         }
     }
     .schedule-doctor{
-        padding: 0 150px 0 100px;
-        height: 300px;
+        padding: 0 150px 30px 100px;
+        height: 100%;
         display: flex;
+        clear: both;
+
         .content-left{
-            width: 50%;
+            @media (min-width: 760px) {
+                    width: 55%;
+                    float: left;
+                }
         }
         .content-right{
-            width: 50%;
+            @media (min-width: 760px) {
+                    width: 45%;
+                    float: left;
+                    padding-left: 20px;
+                    border-top: none;
+                    margin-top: 0px;
+                    border-left: 1px solid #eee;
+                }
         }
     }
     .detail-infor-doctor{
