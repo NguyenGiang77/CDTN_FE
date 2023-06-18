@@ -9,7 +9,6 @@ const mdParser = new MarkdownIt(/* Markdown-it options */);
 
 // Finish!
 function handleEditorChange({ html, text }) {
-  console.log('handleEditorChange', html, text);
 }
 
 class TableUserRedux extends Component {

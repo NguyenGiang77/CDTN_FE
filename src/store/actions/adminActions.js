@@ -254,7 +254,7 @@ export const fetchPostDoctor = (data) => {
                 dispatch({
                     
                     type: actionTypes.FETCH_POST_DOCTOR_SUCCESS,
-                    dataAllDoctor: res.data,
+                    // dataAllDoctor: res.data,
                 })
             }
             else {

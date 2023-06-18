@@ -73,11 +73,20 @@
         "choose": "Choose ",
         "book": " and Book (free)"
     },
+    "extra-infor-doctor": {
+        "address": "ADDRESS OF EXAMINATION",
+        "price-1": "EXAMINATION PRICE",
+        "price-2": "Examination price",
+        "payment": "The patient can pay the cost in the form of: ",
+        "more": "See more",
+        "hide": "Hide price list"
+    },
     "manage-doctor": {
         "title": "ADD DOCTOR'S INFORMATION",
         "choose-doctor": "Select doctor",
         "details": "Introduction",
         "save": "Save",
+        "create": "Create",
         "choose-price": "Select price",
         "choose-province": "Select provinces",
         "choose-payment": "Select payment",

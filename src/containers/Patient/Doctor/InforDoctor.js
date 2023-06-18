@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import HomeHeader from '../../HomePage/HomeHeader';
 import './InforDoctor.scss';
+import DoctorExtraInfor from './DoctorExtraInfor';
 import DoctorSchedule from './DoctorSchedule';
 import { LANGUAGES } from '../../../utils';
 import {getInforDoctor} from '../../../services/userService';
@@ -67,6 +68,7 @@ class InforDoctor extends Component {
                             </div>
                         </div>
                     </div>
+                    
                     <div className='schedule-doctor'>
                         <div className='content-left'>
                             <DoctorSchedule
@@ -74,7 +76,9 @@ class InforDoctor extends Component {
                             />
                         </div>
                         <div className='content-right'>
-
+                            <DoctorExtraInfor
+                                inforDoctorCheck = {this.state.currentDoctorId}
+                            />
                         </div>
                     </div>
                     <div className='detail-infor-doctor'>

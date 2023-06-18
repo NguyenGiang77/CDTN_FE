@@ -27,7 +27,10 @@ class Doctor extends Component {
         this.props.loadTopDoctor();
     }
     handleViewInforDoctor = (doctor) => { 
-        this.props.history.push(`/infor-doctor/${doctor.id}`);
+        if (this.props.history)
+        {
+            this.props.history.push(`/infor-doctor/${doctor.id}`);
+        }
     }
     render() {
         let { language } = this.props;
