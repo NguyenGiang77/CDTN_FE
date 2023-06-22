@@ -13,7 +13,7 @@ import { getAllCodeService, getDetailSpecialtyById } from '../../../services/use
 import { FormattedMessage } from 'react-intl';
 import { LANGUAGES } from '../../../utils';
 class DetailSpecialty extends Component {
-    constructor(props) { 
+    constructor(props) {
         super(props);
         this.state = {
             arrayDoctorId: [],
@@ -23,7 +23,7 @@ class DetailSpecialty extends Component {
         }
     }
     async componentDidMount() {
-        if (this.props.match && this.props.match.params && this.props.match.params.id) { 
+        if (this.props.match && this.props.match.params && this.props.match.params.id) {
             let id = this.props.match.params.id;
 
             let res = await getDetailSpecialtyById({
@@ -31,27 +31,23 @@ class DetailSpecialty extends Component {
                 location: "ALL"
             });
             let resProvince = await getAllCodeService('PROVINCE')
-            
-            if (res && res.errCode === 0 && resProvince && resProvince.errCode ===0) 
-            {
+
+            if (res && res.errCode === 0 && resProvince && resProvince.errCode === 0) {
                 let data = res.data;
                 let arrayDoctorId = []
-                
-                if (data && !_.isEmpty(res.data))
-                {
+
+                if (data && !_.isEmpty(res.data)) {
                     let arr = data.doctorSpecialty;
-                    if (arr && arr.length > 0)
-                    {
+                    if (arr && arr.length > 0) {
                         arr.map(item => {
                             arrayDoctorId.push(item.doctorId);
                         })
                     }
                 }
                 let dataProvince = resProvince.data;
-                let result = [];
-                if (dataProvince && dataProvince.length > 0)
-                {
-                    dataProvince.push({
+
+                if (dataProvince && dataProvince.length > 0) {
+                    dataProvince.unshift({
                         createAt: null,
                         keyMap: "ALL",
                         type: "PROVINCE",
@@ -61,15 +57,45 @@ class DetailSpecialty extends Component {
                     })
                 }
                 this.setState({
-                    dataSpecialty: res.data,  
+                    dataSpecialty: res.data,
                     arrayDoctorId: arrayDoctorId,
-                    listProvince: result
+                    listProvince: dataProvince ? dataProvince : ''
                 })
             }
         }
     }
-    handleSelect = (event) => { 
+    getDataSpecialty = () => { 
 
+    }
+    handleSelect = async (event) => {
+        if (this.props.match && this.props.match.params && this.props.match.params.id) {
+            let id = this.props.match.params.id;
+            let location = event.target.value;
+            let res = await getDetailSpecialtyById({
+                id: id,
+                location: location
+            });
+
+            if (res && res.errCode === 0 ) {
+                let data = res.data;
+                let arrayDoctorId = []
+
+                if (data && !_.isEmpty(res.data)) {
+                    let arr = data.doctorSpecialty;
+                    if (arr && arr.length > 0) {
+                        arr.map(item => {
+                            arrayDoctorId.push(item.doctorId);
+                        })
+                    }
+                }
+
+                
+                this.setState({
+                    dataSpecialty: res.data,
+                    arrayDoctorId: arrayDoctorId,
+                })
+            }
+        }
     }
     //để biets được khi nào prop thay đổi
     async componentDidUpdate(prevProps, prevState, snapshot) {
@@ -77,7 +103,7 @@ class DetailSpecialty extends Component {
     render() {
         let { arrayDoctorId, dataSpecialty, listProvince } = this.state;
         let { language } = this.props;
-        
+
         return (
             <div className="specialty-container">
                 <HomeHeader />
@@ -94,24 +120,26 @@ class DetailSpecialty extends Component {
                             {listProvince && listProvince.length > 0
                                 && listProvince.map((item, index) => {
                                     return (
-                                        <option key = {index} value={item.keyMap}>
-                                            {language === LANGUAGES.VI? item.valueVN: item.valueEN}
+                                        <option key={index} value={item.keyMap}>
+                                            {language === LANGUAGES.VI ? item.valueVN : item.valueEN}
                                         </option>
                                     )
                                 })
                             }
                         </select>
                     </div>
-                    {arrayDoctorId && arrayDoctorId.length > 0 && 
-                        arrayDoctorId.map((item, index) => { 
+                    {arrayDoctorId && arrayDoctorId.length > 0 &&
+                        arrayDoctorId.map((item, index) => {
                             return (
-                                <div className='infor-doctor' key ={index}>
+                                <div className='infor-doctor' key={index}>
                                     <div className='ds-content-left'>
                                         <div className='profile-doctor'>
                                             <ProfieDoctor
                                                 doctorId={item}
-                                                isShowDescription={false}
-                                                // dataSchedule={dataSchedule}
+                                                isShowDescription={true}
+                                                isShowLinkDetail={true}
+                                                isShowPrice = {false}
+                                            // dataSchedule={dataSchedule}
                                             />
                                         </div>
                                     </div>
@@ -120,15 +148,15 @@ class DetailSpecialty extends Component {
                                             <DoctorSchedule
                                                 inforDoctorCheck={item}
                                             />
-                                        </div>  
+                                        </div>
                                         <div className='doctor-extra'>
                                             <DoctorExtraInfor
-                                                inforDoctorCheck = {item}
+                                                inforDoctorCheck={item}
                                             />
-                                        </div>    
+                                        </div>
                                     </div>
                                 </div>
-                            )                       
+                            )
                         })
                     }
                 </div>

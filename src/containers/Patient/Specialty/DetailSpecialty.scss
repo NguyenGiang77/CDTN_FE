@@ -14,10 +14,12 @@
             
         }
         .search-sp{
-                // width: 90%;
+            select{
                 margin: 15px 35px;
-                // margin-left: auto;
-                // margin-right: auto;
+                height: 30px;
+                border-radius: 5px;
+                outline: none;
+                box-shadow: 0 1px 6px rgb(34, 32, 32);            } 
         }
         .infor-doctor {
                 background: white;

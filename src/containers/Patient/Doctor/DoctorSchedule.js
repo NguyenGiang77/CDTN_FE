@@ -19,9 +19,16 @@ class DoctorSchedule extends Component {
             dataSchedule: {}
         }
     }
-     componentDidMount() {
+     async componentDidMount() {
         let { language } = this.props;
-        let allDays = this.setArrDays(language)
+         let allDays = this.setArrDays(language)
+         if (this.props.inforDoctorCheck)
+         {
+             let res = await getSchDoctorByDate(this.props.inforDoctorCheck, allDays[0].value)
+             this.setState({
+                 allAvalableTime: res.data? res.data : []
+             })
+             }
         if (allDays && allDays.length > 0) { 
       
             this.setState({

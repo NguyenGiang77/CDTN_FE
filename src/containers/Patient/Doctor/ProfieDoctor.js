@@ -62,8 +62,9 @@ class ProfieDoctor extends Component {
         
     }
     render() {
-        let { language, isShowDescription,  dataSchedule} = this.props;
+        let { language, isShowDescription,  dataSchedule, isShowLinkDetail, isShowPrice} = this.props;
         let { dataProfile } = this.state;
+
         let nameVn = '', nameEn = '';
         if (dataProfile && dataProfile.positionData) {
             nameVn = `${dataProfile.positionData.valueVN}, ${dataProfile.lastName} ${dataProfile.firstName}`;
@@ -99,30 +100,34 @@ class ProfieDoctor extends Component {
                     </div>
                     
                 </div> 
-                <div className='price'>
-                   <FormattedMessage id = "bookings-modal.price" />
+                {isShowLinkDetail === true && <div>Xem thêm </div>}
+                {}
+                {isShowPrice ===true && 
+                    <div className='price'>
+                        <FormattedMessage id="bookings-modal.price" />
                         {dataProfile && dataProfile.InforDoctor && language === LANGUAGES.VI ?
-                        <NumberFormat
-                            className='currency'
-                            value={dataProfile.InforDoctor.priceData.valueVN}
-                            displayType={'text' }
-                            thousandSeparator={true}
-                            suffix={'VNĐ'}
-                        />
-                        : ''
+                            <NumberFormat
+                                className='currency'
+                                value={dataProfile.InforDoctor.priceData.valueVN}
+                                displayType={'text'}
+                                thousandSeparator={true}
+                                suffix={'VNĐ'}
+                            />
+                            : ''
                         }
                         {dataProfile && dataProfile.InforDoctor && language === LANGUAGES.EN ?
                        
-                        <NumberFormat
-                            className='currency'
-                            value={dataProfile.InforDoctor.priceData.valueEN}
-                            displayType={'text' }
-                            thousandSeparator={true}
-                            suffix={'$'}
-                        />
-                        : ''
+                            <NumberFormat
+                                className='currency'
+                                value={dataProfile.InforDoctor.priceData.valueEN}
+                                displayType={'text'}
+                                thousandSeparator={true}
+                                suffix={'$'}
+                            />
+                            : ''
                         }
-                </div>
+                    </div>
+                }
             </div>  
             
         );
