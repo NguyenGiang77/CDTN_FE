@@ -92,6 +92,60 @@
         "choose-payment": "Select payment",
         "nameclinic": "Clinic name",
         "addressclinic": "Clinic address",
-        "note": "Note"
+        "note": "Note",
+        "specialty": "Select specialty",
+        "clinic": "Select clinic"
+    },
+    
+    
+
+        "bookings-modal": {
+            "price": "Examination price : ",
+            "name": "Your name",
+            "sex": "Gender",
+            "birthday": "Date of birthday",
+            "number": "Phone number",
+            "address": "Address",
+            "email":"Email",
+            
+            "reasons": "Reason for examination",
+            "save": "Confirm",
+            "cancel": "Cancel",
+            "booking": "Free booking",
+            "comfirm": "Appointment confirmed successfully!",
+            "failed": "The appointment does not exist or is already confirmed!"
+    },
+    "toast": {
+        "manage-schedule": {
+            "succeed": "Success!",
+            "error-time": "Invalid selected time!"
+        },
+        "booking-modal": {
+            "comfirm-success": "Booking a new appointment succeed!",
+            "comfirm-warning": "Booking a new appointment error!"
+
+        },
+        "admin-action": {
+
+            "success-create-user": "Create user succeed!",
+            "error-create-user": "Create user failed!",
+            "succeed-delete-user": "Delete user succeed!",
+            "error-delete-user": "Delete user failed!",
+            "succeed-update-user": "Update user succeed!",
+            "error-update-user": "Update user failed!",
+            "succeed-post-doctor": "Save infor doctor succeed!",
+            "error-post-doctor": "Save infor doctor failed!"
+
+        },
+        "manage-specialty": {
+            "succeed": "Succeed!",
+            "error": "Something wrongs"
+        }
+    },
+    "manage-specialty":{
+        "name": "Specialty's name",
+        "image": "Specialty's image",
+        "save": "Create",
+        "file": "Download"
     }
 }

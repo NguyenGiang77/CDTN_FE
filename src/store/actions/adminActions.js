@@ -1,8 +1,9 @@
 import actionTypes from './actionTypes';
+import { FormattedMessage } from 'react-intl';
 import {
     getAllCodeService, createrNewUserFromReact,
     getAllUsers, deleteUserService, editUserService, getTopDoctorService,
-    getAllDoctorService, postInfoDoctors
+    getAllDoctorService, postInfoDoctors, getAllSpecialty
 
 } from '../../services/userService';
 import {toast} from 'react-toastify'
@@ -91,12 +92,20 @@ export const createUser = (data) => {
         try {
             let res = await createrNewUserFromReact(data);
             if (res && res.errCode === 0) {
-                toast.success('Create user succesd');
+            //                 ,
+            // 
+            // admin-action.
+            // admin-action.error-delete-user
+            // admin-action.
+            // admin-action.
+            // admin-action.
+            // admin-action.error-post-doctor
+                toast.success(<FormattedMessage id="toast.admin-action.success-create-user" />)
                 dispatch(createUserSuccess());
                 dispatch(fetchAllUserStart());
             }
             else {
-                toast.error("Delete user failed");
+                toast.error(<FormattedMessage id="toast.admin-action.error-create-user" />)
                 dispatch(createUserFail());
             }
         } catch (e) {
@@ -144,15 +153,16 @@ export const deleteUserStart = (userId) => {
         try {
             let res = await deleteUserService(userId);
             if (res && res.errCode === 0) {
-                toast.success('Delete user succesd');
+                toast.success(<FormattedMessage id="toast.admin-action.succeed-delete-user" />)
                 dispatch(deleteUserSuccess());
                 dispatch(fetchAllUserStart());
             }
             else {
-                toast.error("Delete user failed");
+                toast.error(<FormattedMessage id="toast.admin-action.error-delete-user" />)
                 dispatch(deleteUserFail());
             }
         } catch (e) {
+            toast.error(<FormattedMessage id="toast.admin-action.error-delete-user" />)
             dispatch(deleteUserFail());
             console.log(e);
         }
@@ -172,16 +182,16 @@ export const editUserStart = (data) => {
         try {
             let res = await editUserService(data);
             if (res && res.errCode === 0) {
-                toast.success('Update user succesd');
+                toast.success(<FormattedMessage id="toast.admin-action.succeed-update-user" />)
                 dispatch(editUserSuccess());
                 dispatch(fetchAllUserStart());
             }
             else {
-                toast.error("Edit user failed");
+                toast.error(<FormattedMessage id="toast.admin-action.error-update-user" />)
                 dispatch(editUserFail());
             }
         } catch (e) {
-            toast.error("Edit user failed");
+                toast.error(<FormattedMessage id="toast.admin-action.error-update-user" />)
             dispatch(editUserFail());
             console.log(e);
         }
@@ -250,7 +260,7 @@ export const fetchPostDoctor = (data) => {
         try {
             let res = await postInfoDoctors(data);
             if (res && res.errCode === 0) {
-                toast.success('Save info doctor succeed');
+                toast.success(<FormattedMessage id="toast.admin-action.succeed-post-doctor" />)
                 dispatch({
                     
                     type: actionTypes.FETCH_POST_DOCTOR_SUCCESS,
@@ -258,14 +268,14 @@ export const fetchPostDoctor = (data) => {
                 })
             }
             else {
-                toast.error("Save info doctor failed")
+                toast.error(<FormattedMessage id="toast.admin-action.error-post-doctor" />)
                 dispatch({
                     type: actionTypes.FETCH_POST_DOCTOR_FAIL,
 
                 })
             }
         } catch (e) {
-            toast.error("Save info doctor failed")
+                toast.error(<FormattedMessage id="toast.admin-action.error-post-doctor" />)
             console.log(e)
             dispatch({
                 type: actionTypes.FETCH_POST_DOCTOR_FAIL,
@@ -279,21 +289,18 @@ export const fetchAllcodeScheduleDate= () => {
         try {
             let res = await getAllCodeService('TIME');
             if (res && res.errCode === 0) {
-                // toast.success('Save info doctor succeed');
                 dispatch({
                     type: actionTypes.FETCH_ALLCODE_SCHEDULE_DATE_SUCCESS,
                     dataDate: res.data,
                 })
             }
             else {
-                // toast.error("Save info doctor failed")
                 dispatch({
                     type: actionTypes.FETCH_ALLCODE_SCHEDULE_DATE_FAIL,
 
                 })
             }
         } catch (e) {
-            // toast.error("Save info doctor failed", e)
             console.log(e)
             dispatch({
                 type: actionTypes.FETCH_ALLCODE_SCHEDULE_DATE_FAIL,
@@ -312,14 +319,18 @@ export const getInforDoctor = () => {
             let resPrice = await getAllCodeService('PRICE');
             let resPayment = await getAllCodeService('PAYMENT');
             let resProvince = await getAllCodeService('PROVINCE');
+            let resSpecialty = await getAllSpecialty();
             if (resPrice && resPrice.errCode === 0 &&
                 resPayment && resPayment.errCode === 0 &&
-                resProvince && resProvince.errCode === 0)
+                resProvince && resProvince.errCode === 0 &&
+                resSpecialty && resSpecialty.errCode === 0
+            ) 
             {
                 let data = {
                     resPrice: resPrice.data,
                     resPayment: resPayment.data,
-                    resProvince: resProvince.data
+                    resProvince: resProvince.data,
+                    resSpecialty: resSpecialty.data
                 }
                 dispatch(getInforDoctorSuccess(data));
             }
@@ -338,3 +349,4 @@ export const  getInforDoctorSuccess = (allData) => ({
 export const  getInforDoctorFail = () => ({
     type: actionTypes.FETCH_INFOR_DOCTOR_PRICE_FAIL,
 })
+

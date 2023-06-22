@@ -30,26 +30,35 @@
         }
     }
     .schedule-doctor{
-        padding: 0 150px 30px 100px;
+        @media (min-width: 760px) {
+            padding: 0 150px 30px 100px;
+            
+                height: 100%;
+                display: flex;
+                clear: both;
+        }
+        padding: 0 50px 30px 50px;
         height: 100%;
         display: flex;
         clear: both;
 
         .content-left{
             @media (min-width: 760px) {
-                    width: 55%;
+                    width: 50%;
                     float: left;
                 }
+            width: 60%;
         }
         .content-right{
             @media (min-width: 760px) {
-                    width: 45%;
+                    width: 50%;
                     float: left;
                     padding-left: 20px;
                     border-top: none;
                     margin-top: 0px;
                     border-left: 1px solid #eee;
                 }
+            width: 40%;
         }
     }
     .detail-infor-doctor{

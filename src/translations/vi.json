@@ -94,9 +94,62 @@
         "choose-payment": "Chọn phương thức thanh toán",
         "nameclinic": "Tên phòng khám",
         "addressclinic": "Địa chỉ phòng khám",
-        "note": "Ghi chú"
+        "note": "Ghi chú",
+        "specialty": "Chọn chuyên khoa",
+        "clinic": "Chọn phòng khám, bệnh viện"
 
+    },
+    "bookings-modal": {
+        "price": "Giá khám: ",
+        "name": "Họ và tên",
+        "sex": "Giới tính",
+        "birthday": "Ngày sinh",
+        "number": "Số điện thoại",
+        "address": "Địa chỉ liên hệ",
+        "email":"Địa chỉ Email",
+        "reasons": "Lý do khám",
+        "save": "Xác nhận",
+        "cancel": "Hủy",
+        "booking": "Miễn phí đặt lịch",
+        "comfirm": "Xác nhận lịch hẹn thành công!",
+        "failed": "Lịch hẹn không tồn tại hoặc đã được xác nhận rồi!"
+    },
+    "toast": {
+        
+        
+        "manage-schedule": {
+            "succeed": "Thành công!",
+            "error-time": "Thời gian đã chọn không hợp lệ!"
+        },
+        
+        "booking-modal": {
+            "comfirm-success": "Đăng ký lịch khám bệnh thành công!",
+            "comfirm-warning": "Đăng ký lịch khám bệnh không thành công!"
+
+        },
+        "admin-action": {
+            "success-create-user": "Tạo người dùng thành công!",
+            "error-create-user": "Tạo người dùng thất bại!",
+            "succeed-delete-user": "Xóa người dùng thành công!",
+            "error-delete-user": "Xóa người dùng thất bại!",
+            "succeed-update-user": "Cập nhật thông tin người dùng thành công!",
+            "error-update-user": "Cập nhật thông tin người dùng thất bại!",
+            "succeed-post-doctor": "Lưu thông tin bác sĩ thành công!",
+            "error-post-doctor": "Lưu thông tin bác sĩ thất bại!"
+
+        },
+        "manage-specialty": {
+            "succeed": "Thêm mới thành công",
+            "error": "Thêm mới không thành công"
+        }
+    },
+    "manage-specialty":{
+        "name": "Tên chuyên khoa",
+        "image": "Ảnh chuyên khoa",
+        "save": "Thêm mới",
+        "file": "Tải ảnh"
     }
+    
 
 
 }

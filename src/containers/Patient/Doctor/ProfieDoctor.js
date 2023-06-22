@@ -35,22 +35,26 @@ class ProfieDoctor extends Component {
         if (this.props.language !== prevProps.language) {
         }
         if (this.props.doctorId !== prevState.doctorId) {
+            let data = await this.getdataProfile(this.props.doctorId);
+            this.setState({
+                dataProfile: data,
+            });
             // this.getdataProfile(this.props.doctorId)
          }
 
     }
     renderTimeBooking = (dataSchedule) => { 
         let { language } = this.props
-        console.log('gg',dataSchedule)
         if (dataSchedule && !_.isEmpty(dataSchedule)) {
+            let time = language === LANGUAGES.VI ? dataSchedule.timeTypeData.valueVN : dataSchedule.timeTypeData.valueEN;
             let date = language === LANGUAGES.VI ?
                 moment.unix(+dataSchedule.date / 1000).format('dddd - DD/MM/YYYY')
                 :
-                moment.unix(+dataSchedule.date / 1000).format('ddd - MM/DD/YYYY')
+                moment.unix(+dataSchedule.date / 1000).locale('en').format('ddd - MM/DD/YYYY')
             return (
                 <>
-                    <div>16:30 - 17:00 - {date}</div>
-                    <div>Miễn phí đặt lịch</div>
+                    <div>{time} - {date}</div>
+                    <div><FormattedMessage id = "bookings-modal.booking" /></div>
                 </>
             )
         }
@@ -65,7 +69,6 @@ class ProfieDoctor extends Component {
             nameVn = `${dataProfile.positionData.valueVN}, ${dataProfile.lastName} ${dataProfile.firstName}`;
             nameEn = `${dataProfile.positionData.valueEN}, ${dataProfile.firstName} ${dataProfile.lastName}`;
         }
-        console.log(this.state)
         return (
             <div className='profile-doctor-container'>
                 <div className='infor-doctor-content'>
@@ -97,7 +100,7 @@ class ProfieDoctor extends Component {
                     
                 </div> 
                 <div className='price'>
-                    Giá khám:   
+                   <FormattedMessage id = "bookings-modal.price" />
                         {dataProfile && dataProfile.InforDoctor && language === LANGUAGES.VI ?
                         <NumberFormat
                             className='currency'

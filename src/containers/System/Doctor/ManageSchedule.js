@@ -114,11 +114,9 @@ class ManageSchedule extends Component {
 
 
                 })
-            // toast.success("Success!")
             }
                 
              else {
-                // toast.error("Invalid selected time!")
                 return;
             }
         }
@@ -130,10 +128,11 @@ class ManageSchedule extends Component {
         })
         if (res && res.errCode === 0)
         {
-            toast.success("Success!")
+            toast.success(<FormattedMessage id="toast.manage-schedule.succeed" />)
+           
         }
         else {
-            toast.error("Invalid selected time!")
+            toast.success(<FormattedMessage id="toast.manage-schedule.error-time" />)
         }
         
     }
@@ -192,6 +191,7 @@ class ManageSchedule extends Component {
                                     <FormattedMessage id = "manage-schedule.Save" />
                                 </button>
                             </div>
+                            
                         </div>
                     </div>
                 </div>

@@ -39,6 +39,7 @@ class Doctor extends Component {
         //arrDoctor = arrDoctor.concat(arrDoctor).concat(arrDoctor)
         
         return (
+            
             <div className='section-share section-doctor'>
                 <div className='section-content'>
                     <div className='section-header'>

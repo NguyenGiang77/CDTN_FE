@@ -24,12 +24,9 @@ class InforDoctor extends Component {
             if (res && res.errCode === 0)
             {
                 this.setState({
-                    inforDoctor: res.data,
-                    
+                    inforDoctor: res.data,                   
                 })
             }
-            
-
         }
     }
     //để biets được khi nào prop thay đổi
