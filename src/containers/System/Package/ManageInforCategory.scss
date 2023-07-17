@@ -1,0 +1,17 @@
+.container-up{
+    display: flex;
+    padding-bottom: 10px;
+    gap: 20px;
+    .left{
+        width: 40%;
+    }
+    .right{
+        width: 60%;
+    }
+}
+.row{
+    margin-bottom: 15px;
+    .form-control{
+        margin-bottom: 10px;
+    }
+}
