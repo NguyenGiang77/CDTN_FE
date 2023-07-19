@@ -63,6 +63,9 @@ export const adminMenu = [
             {
                 name: 'menu.admin.manage-package', link: '/system/package-manage'
             },
+            {
+                name: 'menu.admin.manage-schecdule-category', link: '/system/schecdule-category'
+            },
 
         ]
     },
@@ -81,7 +84,7 @@ export const adminMenu = [
 
 export const doctorMenu = [
     {
-        name: 'menu.admin.manage-user',
+        name: 'menu.admin.manage-doctor',
         menus: [
         // { //quản lý kế hoạch khám bệnh của bác sĩ
         //     name: 'menu.doctor.manage-schedule',

@@ -54,7 +54,6 @@ class DetailCategory extends Component {
     render() {
         let { arrayPackageId, dataCategory } = this.state;
         let { language } = this.props;
-        console.log(dataCategory);
         return (
             <div className="specialty-container">
                 <HomeHeader />

@@ -32,7 +32,6 @@ class InforCategory extends Component {
     }
     render() {
        let {dataInforCategory} = this.state
-       console.log('hh',dataInforCategory)
         return (
             <div className='section-share section-InforCategory'>
                 <div className='section-content'>

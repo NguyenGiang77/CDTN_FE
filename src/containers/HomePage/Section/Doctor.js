@@ -36,7 +36,6 @@ class Doctor extends Component {
         let { language } = this.props;
         // let settings = this.props.settings
         let arrDoctor = this.state.arrDoctor;
-        console.log(arrDoctor)
         //arrDoctor = arrDoctor.concat(arrDoctor).concat(arrDoctor)
         
         return (

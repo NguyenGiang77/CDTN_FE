@@ -54,7 +54,6 @@ class DetailClinic extends Component {
     render() {
         let { arrayDoctorId, dataClinic } = this.state;
         let { language } = this.props;
-        console.log(dataClinic);
         return (
             <div className="specialty-container">
                 <HomeHeader />

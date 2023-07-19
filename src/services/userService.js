@@ -47,6 +47,8 @@ const saveBulkScheduleDoctor = (data) => {
     return axios.post(`/api/bulk-create-schedule`, data) 
 
 }
+
+
 const getSchDoctorByDate = (doctorId, date) => { 
     return axios.get(`/api/get-schedule-doctor-by-date?doctorId=${doctorId}&date=${date}`) 
 }
@@ -59,6 +61,7 @@ const getProfileDoctorById = (doctorId) => {
 const postBookingAppointment = (data) => { 
     return axios.post(`/api/patient-book-appointment`, data) 
 }
+
 const postVerifyBook = (data) => { 
     return axios.post(`/api/verify-book-appointment`, data) 
 }
@@ -166,11 +169,27 @@ const editInforCategoryService = (inputdata) => {
 const getAllInforCategory = () => { 
     return axios.get(`/api/get-inforCategory`) 
 }
-const getDetailInforCategoryById = (data) => { 
-    return axios.get(`/api/get-detail-inforCategory-by-id?id=${data.id}`) 
+
+
+const getDetailInforCategoryById = (inputId) => { 
+    return axios.get(`/api/get-detail-inforCategory-by-id?id=${inputId}`) 
 }
-const getExtraInforCategoryById = (id) => { 
-    return axios.get(`/api/get-extra-infor-category-by-id?id=${id}`) 
+const postBookingCategorySchedule = (data) => { 
+    return axios.post(`/api/patient-book-category-appointment`, data) 
+}
+
+const postVerifyBookCategory = (data) => { 
+    return axios.post(`/api/verify-book-category-appointment`, data) 
+}
+const bulkCreateScheduleCategory = (data) => { 
+    return axios.post(`/api/bulk-create-schedule-category`, data) 
+
+}
+const getSchCategoryByDate = (inforCategoryId, date) => { 
+    return axios.get(`/api/get-schedule-category-by-date?inforCategoryId=${inforCategoryId}&date=${date}`) 
+}   
+const getlisPatientForCategory = (data) => { 
+    return axios.get(`/api/get-list-patient-for-category?inforCategoryId=${data.inforCategoryId}&date=${data.date}`) 
 }
 
 // đăng ký gói khám
@@ -221,7 +240,8 @@ export {
      getAllInforCategory, getAllInforCategories, getDetailInforCategoryById,
      editInforCategoryService, deleteInforCategoryService, createrNewInforCategoryFromReact,
      getAllAllcodes, createrNewAllcodeFromReact, editAllcodeService, deleteAllcodeService,
-     getExtraInforCategoryById
+     bulkCreateScheduleCategory, getSchCategoryByDate, getlisPatientForCategory,
+      postBookingCategorySchedule, postVerifyBookCategory
 
     
 }

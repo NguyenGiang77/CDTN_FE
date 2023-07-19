@@ -44,7 +44,8 @@
             "package": "Chi tiết gói khám",
             "manage-package": "Quản lý chi tiết thông tin gói khám",
             "allcode": "Thông tin chung",
-            "manage-allcode": "Quản lý thông tin chung"
+            "manage-allcode": "Quản lý thông tin chung",
+            "manage-schecdule-category": "Quản lý lịch khám gói khám"
         },
         "doctor": {
             "schedule": "Quản lý kế hoạch khám bệnh",
@@ -72,11 +73,14 @@
         "More": "Xem thêm"
     },
     "manage-schedule": {
-        "title": "Quản lý kế hoạch khám bệnh của bác sĩ"   ,
+        "title": "Quản lý kế hoạch khám bệnh của bác sĩ" ,
+        "title-infor-category": "Quản lý kế hoạch lịch khám của gói khám bệnh" ,
         "choose-doctor": "Chọn bác sĩ",
+        "choose-infor-category": "Chọn gói khám bệnh",
         "choose-date": "Chọn ngày",
         "Save": "Lưu thông tin",
         "Message": "Bác sĩ không có lịch hẹn trong thời gian này, vui lòng chọn thời gian khác!",
+        "Message-infor-category": "Gói khám bệnh không có lịch hẹn trong thời gian này, vui lòng chọn thời gian khác!",
         "calendar": "Lịch khám",
         "choose": "Chọn ",
         "book": " và đặt (miễn phí)"

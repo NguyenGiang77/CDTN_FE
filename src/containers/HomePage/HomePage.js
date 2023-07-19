@@ -11,7 +11,6 @@ import Doctor from './Section/Doctor';
 import HomeFooter from './HomeFooter';
 class HomePage extends Component {
     // handleAfterChange = (index, dontAnimate) => {
-    //     console.log(index);
     // }
     render() {
         let settings = {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import HomeHeader from '../../HomePage/HomeHeader';
 import './DetailInforCategory.scss';
+import CategorySchedule from './CategorySchedule';
 import CategoryExtraInfor from './CategoryExtraInfor';
 import { LANGUAGES } from '../../../utils';
 import {getDetailInforCategoryById} from '../../../services/userService';
@@ -19,7 +20,7 @@ class DetailInforCategory extends Component {
             this.setState({
                 currentInforCategoryId: id
             });
-            let res = await getDetailInforCategoryById({id:id});
+            let res = await getDetailInforCategoryById(id);
             if (res && res.errCode === 0)
             {
                 this.setState({
@@ -35,7 +36,6 @@ class DetailInforCategory extends Component {
     render() {
         let { language } = this.props;
         let { inforCategory } = this.state;
-        console.log('h',inforCategory)
         let nameVn = ''
             nameVn = inforCategory.name;
         
@@ -62,6 +62,9 @@ class DetailInforCategory extends Component {
                     
                     <div className='schedule-doctor'>
                         <div className='content-left'>
+                            <CategorySchedule
+                                inforCategoryCheck = {this.state.currentInforCategoryId}
+                            />
                         </div>
                         <div className='content-right'>
                             <CategoryExtraInfor

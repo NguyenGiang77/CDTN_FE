@@ -13,6 +13,7 @@ const initialState = {
     allcodes: [],
     specialties: [],
     inforCategories: [],
+    allInforCategory: [],
     clinics: [],
     categories: [],
     provinces: [],
@@ -203,7 +204,17 @@ const adminReducer = (state = initialState, action) => {
             state.inforCategories = [];
             return {
                 ...state,
-            }        
+            }  
+        case actionTypes.FETCH_ALL_INFOR_CATEGORY_SUCCESS:
+            state.allInforCategory = action.dataAllInforCategory;
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_ALL_INFOR_CATEGORY_FAIL:
+            state.allInforCategory = [];
+            return {
+                ...state,
+            }      
         case actionTypes.FETCH_ALL_ALLCODE_SUCCESS:
             state.allcodes = action.allcodes;
             return {

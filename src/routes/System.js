@@ -11,6 +11,7 @@ import ManageClinic from '../containers/System/Clinic/ManageClinic';
 import ManageCategory from '../containers/System/Category/ManageCategory';
 import ManageInforCategory from '../containers/System/Package/ManageInforCategory';
 import ManageAllcode from '../containers/System/Allcode/ManageAllcode';
+import SchecduleInforCategory from '../containers/System/Package/SchecduleInforCategory';
 class System extends Component {
     render() {
        
@@ -29,6 +30,8 @@ class System extends Component {
                             <Route path="/system/category-manage" component={ManageCategory} />
                             <Route path="/system/package-manage" component={ManageInforCategory} />
                             <Route path="/system/allcode-manage" component={ManageAllcode} />
+                            <Route path="/system/schecdule-category" component={SchecduleInforCategory} />
+                            
                             {/* <Route path="/system/register-package-group-or-account" component={RegisterPackageGroupOrAcc} /> */}
                             <Route component={() => { return (<Redirect to={systemMenuPath} />) }} />
                             

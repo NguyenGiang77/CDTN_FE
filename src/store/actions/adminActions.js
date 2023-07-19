@@ -9,7 +9,7 @@ import {
     editCategoryService, deleteCategoryService,
     editspecialtyService,deletespecialtyService, getAllSpecialties, createSpecialtyFromReact,
     createrNewInforCategoryFromReact, editInforCategoryService, deleteInforCategoryService, getAllInforCategories, getAllCategory,
-    getAllAllcodes, editAllcodeService, deleteAllcodeService, createrNewAllcodeFromReact
+    getAllAllcodes, editAllcodeService, deleteAllcodeService, createrNewAllcodeFromReact, getAllInforCategory, AllInforCategory
 } from '../../services/userService';
 import {toast} from 'react-toastify'
 //LẤY BIẾN GENDER TỪ BE
@@ -810,6 +810,31 @@ export const editInforCategoryFail = () => ({
     type: actionTypes.EDIT_INFORCATEGORY_FAIL
 })
 
+
+export const fetchAllIforCategory = () => {
+    return async (dispatch, getState /*hai tham so cua redux*/) => {
+        try {
+            let res = await getAllInforCategory();
+            if (res && res.errCode === 0) {
+                dispatch({
+                    type: actionTypes.FETCH_ALL_INFOR_CATEGORY_SUCCESS,
+                    dataAllInforCategory: res.data,
+                })
+            }
+            else {
+                dispatch({
+                    type: actionTypes.FETCH_ALL_INFOR_CATEGORY_FAIL,
+
+                })
+            }
+        } catch (e) {
+            console.log(e)
+            dispatch({
+                type: actionTypes.FETCH_ALL_INFOR_CATEGORY_FAIL,
+            })
+        }
+    }
+}
 
 /// phòng khám
 export const createSpecialty = (data) => {

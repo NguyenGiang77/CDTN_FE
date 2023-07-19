@@ -6,13 +6,13 @@ import { toast } from 'react-toastify';
 import Select from 'react-select';
 import * as actions from '../../../../store/actions';
 import DatePicker from '../../../../components/Input/DatePicker';
-import ProfieDoctor from '../ProfieDoctor';
+import ProfieCategory from '../ProfieCategory';
 import moment from 'moment';
 import { Button, Modal, ModalHeader, ModalFooter, ModalBody } from 'reactstrap'
 import NumberFormat from 'react-number-format';
 import { LANGUAGES } from '../../../../utils';
 import { FormattedMessage } from 'react-intl';
-import { postBookingAppointment } from '../../../../services/userService';
+import { postBookingCategorySchedule } from '../../../../services/userService';
 
 class BookingModal extends Component {
     constructor(props) {
@@ -26,7 +26,7 @@ class BookingModal extends Component {
             birthday: '',
             genders: '',
             selectedGenders: '',
-            doctorId: '',
+            inforCategoryId: '',
             timeType: '',
             
 
@@ -66,10 +66,10 @@ class BookingModal extends Component {
         }
         if (this.props.dataSchedule !== prevProps.dataSchedule) {
             if (this.props.dataSchedule && !_.isEmpty(this.props.dataSchedule)) {
-                let doctorId = this.props.dataSchedule.doctorId;
+                let inforCategoryId = this.props.dataSchedule.inforCategoryId;
                 let timeType = this.props.dataSchedule.timeType;
                 this.setState({
-                    doctorId: doctorId,
+                    inforCategoryId: inforCategoryId,
                     timeType: timeType,
                 })
             }
@@ -94,7 +94,7 @@ class BookingModal extends Component {
     buildTimeBooking = (dataSchedule) => { 
         let { language } = this.props
         if (dataSchedule && !_.isEmpty(dataSchedule)) {
-            let time = language === LANGUAGES.VI ? dataSchedule.timeTypeData.valueVN : dataSchedule.timeTypeData.valueEN;
+            let time = language === LANGUAGES.VI ? dataSchedule.timeScheduleCateData.valueVN : dataSchedule.timeScheduleCateData.valueEN;
             let date = language === LANGUAGES.VI ?
                 moment.unix(+dataSchedule.date / 1000).format('dddd - DD/MM/YYYY')
                 :
@@ -103,24 +103,21 @@ class BookingModal extends Component {
         }
         return ''
     }
-    buildDoctorName = (dataSchedule) => { 
+    buildCategoryName = (dataSchedule) => { 
         let { language } = this.props
         if (dataSchedule && !_.isEmpty(dataSchedule)) {
-            let name = language === LANGUAGES.VI ?
-                `${dataSchedule.doctorData.lastName} ${dataSchedule.doctorData.firstName}`
-                :
-                `${dataSchedule.doctorData.firstName} ${dataSchedule.doctorData.lastName}`
+            let name = dataSchedule.schecduleInforCategoryData.name
             return name
         }
         return ''
     }
     handleSave = async () => {
             
-        // !data.email || !data.doctorId || !data.timeType || !data.date
-        let doctorName = this.buildDoctorName(this.props.dataSchedule);
+        // !data.email || !data.inforCategoryId || !data.timeType || !data.date
+        let inforCategoryName = this.buildCategoryName(this.props.dataSchedule);
         let date = new Date(this.state.birthday).getTime();
         let timeString = this.buildTimeBooking(this.props.dataSchedule)
-            let res = await postBookingAppointment({
+            let res = await postBookingCategorySchedule({
                 Name: this.state.Name,
                 phoneNumber: this.state.phoneNumber,
                 email: this.state.email,
@@ -129,11 +126,11 @@ class BookingModal extends Component {
                 date: this.props.dataSchedule.date,
                 birthday: date,
                 selectedGenders: this.state.selectedGenders.value,
-                doctorId: this.state.doctorId,
+                inforCategoryId: this.state.inforCategoryId,
                 timeType: this.state.timeType,
                 language: this.props.language,
                 timeString: timeString,
-                doctorName: doctorName,
+                inforCategoryName: inforCategoryName,
             })
             if (res && res.errCode === 0) {
                 toast.success(<FormattedMessage id="toast.booking-modal.comfirm-success" />)
@@ -146,14 +143,14 @@ class BookingModal extends Component {
     }
         render(){
             let { isOpenModalBooking, closeModalBooking, dataSchedule } = this.props;
-            let doctorId = '';
+            let inforCategoryId = '';
             // // cách 1
             //  if(dataSchedule && _.isEmpty(dataSchedule)) {
-            //     doctorId = dataSchedule.doctorId
+            //     inforCategoryId = dataSchedule.inforCategoryId
             // }
             // Cách 2
             
-            doctorId = dataSchedule && !_.isEmpty(dataSchedule) ? dataSchedule.doctorId : '';
+            inforCategoryId = dataSchedule && !_.isEmpty(dataSchedule) ? dataSchedule.inforCategoryId : '';
             return (
                 <Modal
                     isOpen={isOpenModalBooking}
@@ -171,8 +168,8 @@ class BookingModal extends Component {
                         </div>
                         <div className='booking-body'>
                             <div className='infor-doctor'>
-                                <ProfieDoctor
-                                    doctorId={doctorId}
+                                <ProfieCategory
+                                    inforCategoryId={inforCategoryId}
                                     isShowDescription={false}
                                     dataSchedule={dataSchedule}
                                     isShowLinkDetail={true}

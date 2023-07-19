@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import './CategoryExtraInfor.scss';
 import NumberFormat from 'react-number-format';
-import { getExtraInforCategoryById } from '../../../services/userService';
+import { getDetailInforCategoryById } from '../../../services/userService';
 import { LANGUAGES } from '../../../utils';
 import { FormattedMessage } from 'react-intl';
 class CategoryExtraInfor extends Component {
@@ -17,7 +17,7 @@ class CategoryExtraInfor extends Component {
     async componentDidMount() {
          if (this.props.inforCategoryCheck)
          {
-             let res = await getExtraInforCategoryById(this.props.inforCategoryCheck);
+             let res = await getDetailInforCategoryById(this.props.inforCategoryCheck);
              if (res && res.errCode === 0) {
                  this.setState({
                      extraInfor: res.data
@@ -33,7 +33,7 @@ class CategoryExtraInfor extends Component {
         }
         if (this.props.inforCategoryCheck !== prevProps.inforCategoryCheck)
         {
-            let res = await getExtraInforCategoryById(this.props.inforCategoryCheck);
+            let res = await getDetailInforCategoryById(this.props.inforCategoryCheck);
             if (res && res.errCode === 0)
             {
                 this.setState({
@@ -51,7 +51,6 @@ class CategoryExtraInfor extends Component {
     }
     render() {
         let { isShowDetailInfor, extraInfor } = this.state;
-        console.log('hh',extraInfor)
         let {language} = this.props
         return (
             <div className='doctor-infor-conteiner'>

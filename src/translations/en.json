@@ -42,7 +42,8 @@
             "package": "Checkup package details",
             "manage-package": "Manage details of examination package information",
             "allcode": "general information",
-            "manage-allcode": "General information management"
+            "manage-allcode": "General information management",
+            "manage-schecdule-category":"Manage schedule of examination packages"
         },
         "doctor": {
             "schedule": "Manage Doctor's schedule",
@@ -72,10 +73,13 @@
     },
     "manage-schedule": {
         "title": "Manage doctor's examination plan",
+        "title-infor-category": "Manage category's examination plan" ,
         "choose-doctor": "Choose a doctor",
+        "choose-infor-category": "Choose a category",
         "choose-date": "Choose a date",
         "Save" : "Save",
         "Message": "The doctor does not have an appointment during this time, please choose another time!",
+        "Message-infor-category": "The category does not have an appointment during this time, please choose another time!",
         "calendar": "Schedule",
         "choose": "Choose ",
         "book": " and Book (free)"

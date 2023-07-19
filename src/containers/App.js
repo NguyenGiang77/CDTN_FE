@@ -14,6 +14,7 @@ import InforDoctor from './Patient/Doctor/InforDoctor';
 import CustomScrollbars from '../components/CustomScrollbars';
 import Doctor from '../routes/Doctor';
 import EmailBook from './Patient/EmailBook';
+import EmailBookCategory from './Patient/EmailBookCategory';
 import DetailSpecialty from './Patient/Specialty/DetailSpecialty';
 import DetailClinic from './Patient/Clinic/DetailClinic';
 import DetailCategory from './Patient/Category/DetailCategory';
@@ -62,7 +63,8 @@ class App extends Component {
                                     <Route path={path.DETAIL_SPECIALTY} component={DetailSpecialty} />
                                     <Route path={path.DETAIL_CLINIC} component={DetailClinic} /> 
                                     <Route path={path.INFOR_CATEGORY} component={DetailInforCategory} /> 
-                                    <Route path={path.VERIFY_BOOKING} component={EmailBook} />
+                                    <Route path={path.EMAIL_BOOKING} component={EmailBook} />
+                                    <Route path={path.VERIFY_BOOKING_CATEGORY} component={EmailBookCategory} />
                                     <Route path={path.CATEGORY} component={DetailCategory} />
                                 </Switch>
                             </CustomScrollbars> 

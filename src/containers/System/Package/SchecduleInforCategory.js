@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import './ManageSchedule.scss';
+import './SchecduleInforCategory.scss';
 import Select from 'react-select';
 import { LANGUAGES, CRUB_ACTIONS, dateFormat } from '../../../utils';
 import DatePicker from '../../../components/Input/DatePicker';
@@ -8,14 +8,14 @@ import * as actions from '../../../store/actions';
 import { FormattedMessage } from 'react-intl';
 import { toast } from 'react-toastify'
 import _ from 'lodash';
-import { saveBulkScheduleDoctor } from '../../../services/userService';
+import { bulkCreateScheduleCategory } from '../../../services/userService';
 import moment from 'moment';
-class ManageSchedule extends Component {
+class SchecduleInforCategory extends Component {
     constructor(props) { 
         super(props);
         this.state = {
-            lisDoctor: [],
-            selectedDoctor: {},
+            listCategory: [],
+            selectedCategory: {},
             date: '',
             rangTime: [],
             
@@ -24,14 +24,14 @@ class ManageSchedule extends Component {
 
     }
     componentDidMount() {
-        this.props.fetchAllDoctor();
+        this.props.fetchAllIforCategory();
         this.props.fetchAllcodeScheduleDate();
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.allDoctor !== this.props.allDoctor) {
-            let dataSelect = this.buildDataCombobox(this.props.allDoctor)
+        if (prevProps.allInforCategory !== this.props.allInforCategory) {
+            let dataSelect = this.buildDataCombobox(this.props.allInforCategory)
             this.setState({
-                lisDoctor: dataSelect
+                listCategory: dataSelect
             })
         }
         if (prevProps.allScheduleDate !== this.props.allScheduleDate) {
@@ -53,13 +53,11 @@ class ManageSchedule extends Component {
     } 
     buildDataCombobox = (inputdata) => { 
         let result = [];
-        let {language} = this.props;
         if (inputdata && inputdata.length > 0) {
             inputdata.map((item, index) => {
                 let object = {};
-                let labelVn = `${item.lastName} ${item.firstName}`;
-                let labelEn = `${item.lastName} ${item.firstName}`;
-                object.label = language === LANGUAGES.VI ? labelVn : labelEn;
+                let labelName = item.name;
+                object.label = labelName;
                 object.value = item.id;
                 result.push(object);
 
@@ -69,7 +67,7 @@ class ManageSchedule extends Component {
         return result;
     }
     handleChange = async  selectedOption => {
-        this.setState({ selectedDoctor: selectedOption });
+        this.setState({ selectedCategory: selectedOption });
 
     }
     handleChangeDate = (date) => { 
@@ -90,12 +88,12 @@ class ManageSchedule extends Component {
 
     }
     handleSaveSchedule = async() =>{
-        let { rangTime, selectedDoctor, date } = this.state;
+        let { rangTime, selectedCategory, date } = this.state;
         let result = [];
         if (!date) {
             toast.error("Invalid date!")
         }
-        if (selectedDoctor && _.isEmpty(selectedDoctor)) { 
+        if (selectedCategory && _.isEmpty(selectedCategory)) { 
             toast.error("Invalid selected doctor!")
             return
         }
@@ -107,7 +105,7 @@ class ManageSchedule extends Component {
             if (selectedDate && selectedDate.length > 0) {
                 selectedDate.map((schedule,index) => {
                     let object = {};
-                    object.doctorId = selectedDoctor.value;
+                    object.inforCategoryId = selectedCategory.value;
                     object.date = formatedDate;
                     object.timeType = schedule.keyMap;
                     result.push(object);
@@ -120,9 +118,9 @@ class ManageSchedule extends Component {
                 return;
             }
         }
-        let res = await saveBulkScheduleDoctor({
+        let res = await bulkCreateScheduleCategory({
             arrSchedule: result,
-            doctorId: selectedDoctor.value,
+            inforCategoryId: selectedCategory.value,
             formatedDate: formatedDate,
 
         })
@@ -132,7 +130,7 @@ class ManageSchedule extends Component {
            
         }
         else {
-            toast.success(<FormattedMessage id="toast.manage-schedule.error-time" />)
+            toast.error(<FormattedMessage id="toast.manage-schedule.error-time" />)
         }
         
     }
@@ -142,22 +140,22 @@ class ManageSchedule extends Component {
         let { language } = this.props;
         let yesterday = new Date(new Date().setDate(new Date().getDate()-1));
         console.log(rangTime)
-        console.log('gg',this.state)
+        console.log('kk',this.state)
         return (
             <React.Fragment>
                 <div className='manage-schedule-container'>
                     <div className='m-s-title'>
-                        <FormattedMessage id ="manage-schedule.title"
+                        <FormattedMessage id ="manage-schedule.title-infor-category"
                         />
                     </div>
                     <div className='container'>
                         <div className='row'>
                             <div className='col-6 form-group'>
-                                <label><FormattedMessage id = "manage-schedule.choose-doctor" /></label>
+                                <label><FormattedMessage id = "manage-schedule.choose-infor-category" /></label>
                                 <Select
-                                    value={this.state.selectedDoctor}
+                                    value={this.state.selectedCategory}
                                     onChange={this.handleChange}
-                                    options={this.state.lisDoctor}
+                                    options={this.state.listCategory}
                                 />                              </div>
                             <div className='col-6 form-group'>
                                 <label><FormattedMessage id = "manage-schedule.choose-date" /></label>
@@ -203,7 +201,7 @@ const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
         language: state.app.language,
-        allDoctor: state.admin.allDoctor,
+        allInforCategory: state.admin.allInforCategory,
         allScheduleDate: state.admin.allScheduleDate
 
     };
@@ -211,10 +209,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchAllDoctor: () => dispatch(actions.fetchAllDoctor()),
+        fetchAllIforCategory: () => dispatch(actions.fetchAllIforCategory()),
         fetchAllcodeScheduleDate: () => dispatch(actions.fetchAllcodeScheduleDate()),
 
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ManageSchedule);
+export default connect(mapStateToProps, mapDispatchToProps)(SchecduleInforCategory);
