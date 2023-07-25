@@ -55,7 +55,8 @@ class AllDoctor extends Component {
                     </span>
                 </div>  
                 <div className='container-center'>
-                    <input></input>
+                    <i className="fas fa-search"></i>
+                    <input type='text' placeholder='Tìm kiếm bác sĩ' />
                 </div>
                 <div className='container-down'>
                     <div className='section-body'>

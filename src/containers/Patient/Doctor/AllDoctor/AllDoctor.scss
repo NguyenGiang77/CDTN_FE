@@ -32,6 +32,33 @@
             font-size: 20px;
         }
     }
+    .container-center{
+        .search {
+            border: 1px solid burlywood;
+            background-color: burlywood;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            padding: 10px;
+            text-align: center;
+            width: fit-content;
+            border-radius: 30px;
+
+        i {
+                margin: 0 5px;
+        }
+
+        input {
+                height: 30px;
+                width: 400px;
+                background: transparent;
+                border: none;
+                outline: none;
+                font-size: 15px;
+        }
+    }
+    }
     .container-down{
         .section-body {
             .section-customize {
