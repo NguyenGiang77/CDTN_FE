@@ -6,6 +6,7 @@ import MdEditor from 'react-markdown-editor-lite';
 import { LANGUAGES, CRUB_ACTIONS, CommonUtils } from '../../../utils';
 import * as actions from '../../../store/actions';
 import './ManageCategory.scss'
+import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 import TableCategory from './TableCategory';
 const mdParser = new MarkdownIt();
@@ -21,6 +22,10 @@ class ManageCategory extends Component {
             categoryMarkown: '',
             action: '',
             categoryRditId: ''    ,
+            image: '',
+            imgURL: '',
+            isOpen: false,
+
         }
      }
 
@@ -35,10 +40,33 @@ class ManageCategory extends Component {
             this.setState({
                 name: '',
                 categoryHTML: '',
+                image: '',
                 categoryMarkown: '',
+                imgURL: '',
                 action: CRUB_ACTIONS.CREATE,
             })
             }
+    }
+    handleImageChange =  async (event) => { 
+        let datafile = event.target.files;
+        let file = datafile[0];
+        if (file)
+        {
+            let base64 = await CommonUtils.getBase64(file);            
+            let objectUrl = URL.createObjectURL(file);
+            this.setState({
+                imgURL: objectUrl,
+                image: base64
+            })
+            
+                
+            
+        }
+    }
+    openImg = () => { 
+        if (!this.state.imgURL) return;
+    
+        this.setState({ isOpen: true })
     }
     handleSaveCategoryFE = () => { 
         let isValid = this.checkValidateInput();
@@ -50,6 +78,8 @@ class ManageCategory extends Component {
                 name: this.state.name,
                 categoryHTML: this.state.categoryHTML,
                 categoryMarkown: this.state.categoryMarkown,
+                image: this.state.image,
+
             })
             
         }
@@ -59,6 +89,8 @@ class ManageCategory extends Component {
                 name: this.state.name,
                 categoryHTML: this.state.categoryHTML,
                 categoryMarkown: this.state.categoryMarkown,
+                image: this.state.image,
+
             })
         }
         
@@ -92,11 +124,16 @@ class ManageCategory extends Component {
         
     }
     handleEditCategoryFromParent = (category) => { 
-        
+        let imageBase64 = '';
+        if (category.image) { 
+            imageBase64 = new Buffer(category.image, 'base64').toString('binary');
+        }
         this.setState({
             name: category.name,
             categoryHTML: category.categoryHTML,
             categoryMarkown: category.categoryMarkown,
+            imgURL: imageBase64,
+            image: '',
             action: CRUB_ACTIONS.EDIT,
             categoryRditId: category.id
             })
@@ -120,7 +157,24 @@ class ManageCategory extends Component {
                                 value={name} 
                                 onChange={(event) => { this.onChangeInput(event, 'name') }}
                             />
-                        </div>                       
+                        </div> 
+                        <div className='col-6 my-3'>
+                                <label><FormattedMessage id="manage-pack.image" /></label>
+                                <div className='img-container'>
+                                    <input id='previewImg' type="file" hidden
+                                        onChange={(event) =>this.handleImageChange(event)}
+                                    
+                                    />
+                                    <label className='label-img' htmlFor='previewImg'><FormattedMessage id="manage-clinic.file" /><i className="fas fa-upload"></i> </label>
+                                    <div className='image'
+                                        style={{ backgroundImage: `url(${this.state.imgURL})`}}
+                                        onClick={() => this.openImg()}
+                                    >
+                                        
+                                    </div>
+                                </div>
+                                
+                            </div>                      
                         <div className='col-12 manage-doctor-edit'>
                             <MdEditor
                                 style={{ height: '300px' }}
@@ -153,6 +207,13 @@ class ManageCategory extends Component {
                 </div>
             
             </div>
+            {this.state.isOpen === true &&
+                    <Lightbox
+                        mainSrc={this.state.imgURL}
+                        onCloseRequest={() => this.setState({ isOpen: false })}
+                    
+                    />
+                }
         </div>
         )
     }

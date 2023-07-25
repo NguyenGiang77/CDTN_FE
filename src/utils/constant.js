@@ -8,9 +8,15 @@ export const path = {
     DETAIL_SPECIALTY: '/detail-specialty/:id',
     DETAIL_CLINIC: '/detail-clinic/:id',
     EMAIL_BOOKING: '/verify-booking',
+    DETAIL_CATEGORY: '/detail-category/:id',
     VERIFY_BOOKING_CATEGORY:'/verify-booking-category',
-    CATEGORY: '/info-category',
-    INFOR_CATEGORY: '/infor-category/:id'
+    INFOR_CATEGORY: '/infor-category/:id',
+    ALL_CATEGORY: '/all-category',
+    ALL_DOCTOR: '/alldoctor',
+    ALL_SPECIALTY: '/all-specialty',
+    ALL_CLINIC: '/all-clinic',
+    ALL_INFORCATEGORY: '/all-inforcategory'
+    
     
 
 };

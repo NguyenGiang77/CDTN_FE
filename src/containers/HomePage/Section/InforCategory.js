@@ -30,6 +30,12 @@ class InforCategory extends Component {
         }
     
     }
+    handleAllInforCategory = () =>{
+        if (this.props.history)
+        {
+            this.props.history.push(`/all-inforcategory`);
+        }
+    }
     render() {
        let {dataInforCategory} = this.state
         return (
@@ -37,7 +43,11 @@ class InforCategory extends Component {
                 <div className='section-content'>
                     <div className='section-header'>
                         <span className='title-section'><FormattedMessage id ="manage-pack.title"></FormattedMessage></span>
-                        <button className='btn-section'><FormattedMessage id ="manage-pack.more"></FormattedMessage></button>
+                        <button className='btn-section'
+                            onClick={() => this.handleAllInforCategory()}
+                        >
+                            <FormattedMessage id ="manage-pack.more"></FormattedMessage>
+                        </button>
                     </div>
                     <div className='section-body'>
                         <Slider {...this.props.settings} >

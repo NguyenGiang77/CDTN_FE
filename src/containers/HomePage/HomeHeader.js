@@ -19,10 +19,28 @@ class HomeHeader extends Component {
             this.props.history.push(`/home`);
         }
     }
-    handleViewInforCategory = () => { 
+    handleViewCategory = () => { 
         if (this.props.history)
         {
-            this.props.history.push(`/info-category`);
+            this.props.history.push(`/all-category`);
+        }
+    }
+    handleAllInforDoctor = () =>{
+        if (this.props.history)
+        {
+            this.props.history.push(`/alldoctor`);
+        }
+    }
+    handleAllInforClinic = () =>{
+        if (this.props.history)
+        {
+            this.props.history.push(`/all-clinic`);
+        }
+    }
+    handleAllInforSpecialty = () =>{
+        if (this.props.history)
+        {
+            this.props.history.push(`/all-specialty`);
         }
     }
     render() {
@@ -41,22 +59,36 @@ class HomeHeader extends Component {
                             </div>
                             <ul className='center-content'>
                                 <li className='home-children'>
-                                    <div><b><FormattedMessage id="home-header.specialty"/></b></div>
-                                    <div className='subs-title'><FormattedMessage id="home-header.infor"/></div>
+                                    <div><b
+                                        onClick={() => this.handleAllInforSpecialty()}
+                                    ><FormattedMessage id="home-header.specialty"/></b></div>
+                                    <div className='subs-title'
+                                        onClick={() => this.handleAllInforSpecialty()}
+                                    ><FormattedMessage id="home-header.infor"/></div>
                                 </li>
                                 <li className='home-children'>
-                                    <div><b><FormattedMessage id="home-header.hospital"/></b></div>
-                                    <div className='subs-title'><FormattedMessage id="home-header.choose-hospital"/></div>
+                                    <div><b
+                                    onClick={() => this.handleAllInforClinic()}
+                                    ><FormattedMessage id="home-header.hospital"/></b></div>
+                                    <div className='subs-title'
+                                    onClick={() => this.handleAllInforClinic()}
+                                    ><FormattedMessage id="home-header.choose-hospital"/></div>
                                 </li>
                                 <li className='home-children'>
-                                    <div><b><FormattedMessage id="home-header.doctor"/></b></div>
-                                    <div className='subs-title'><FormattedMessage id="home-header.choose-doctor"/></div>
+                                    <div><b
+                                        onClick={() => this.handleAllInforDoctor()}
+                                    ><FormattedMessage id="home-header.doctor"/></b></div>
+                                    <div className='subs-title'
+                                        onClick={() => this.handleAllInforDoctor()}
+                                    ><FormattedMessage id="home-header.choose-doctor"/></div>
                                 </li>
                                 <li className='home-children'>
-                                    <div><b><FormattedMessage id="home-header.medical"/></b></div>
-                                    <div className='subs-title'><FormattedMessage id="home-header.choose-medical"
-                                        onClick={ () => this.handleViewInforCategory()}
-                                    /></div>
+                                    <div><b
+                                    onClick={ () => this.handleViewCategory()}
+                                    ><FormattedMessage id="home-header.medical"/></b></div>
+                                    <div className='subs-title' onClick={ () => this.handleViewCategory()}>
+                                        <FormattedMessage id="home-header.choose-medical"/>
+                                    </div>
                                 </li>
                             </ul>
                         </div>

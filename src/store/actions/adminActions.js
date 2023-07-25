@@ -3,13 +3,13 @@ import { FormattedMessage } from 'react-intl';
 import {
     getAllCodeService, createrNewUserFromReact,
     getAllUsers, deleteUserService, editUserService, getTopDoctorService,
-    getAllDoctorService, postInfoDoctors, getAllSpecialty, 
+    getAllDoctorService, postInfoDoctors, 
     getAllClinic,createrNewClinicFromReact, getAllClinics,deleteClinicService, editClinicService,
     getAllCategories,  createrNewCategoryFromReact,
     editCategoryService, deleteCategoryService,
-    editspecialtyService,deletespecialtyService, getAllSpecialties, createSpecialtyFromReact,
+    editspecialtyService,deletespecialtyService, getAllSpecialties, createSpecialtyFromReact, getAllSpecialty,
     createrNewInforCategoryFromReact, editInforCategoryService, deleteInforCategoryService, getAllInforCategories, getAllCategory,
-    getAllAllcodes, editAllcodeService, deleteAllcodeService, createrNewAllcodeFromReact, getAllInforCategory, AllInforCategory
+    getAllAllcodes, editAllcodeService, deleteAllcodeService, createrNewAllcodeFromReact, getAllInforCategory, getAllInforDoctor
 } from '../../services/userService';
 import {toast} from 'react-toastify'
 //LẤY BIẾN GENDER TỪ BE
@@ -135,6 +135,78 @@ export const  fetchCategorySuccess = (categoryData) => ({
 export const fetchCategoryFail = () => ({
     type: actionTypes.FETCH_CATEGORY_FAIL,
 })
+export const fetchAllInforDoctor = () => {
+    return async (dispatch, getState /*hai tham so cua redux*/) => {
+        try {
+            let res = await getAllInforDoctor();
+            if (res && res.errCode === 0) {
+                dispatch({
+                    type: actionTypes.FETCH_ALL_INFORDOCTOR_SUCCESS,
+                    dataAllDoctor: res.data,
+                })
+            }
+            else {
+                dispatch({
+                    type: actionTypes.FETCH_ALL_INFORDOCTOR_FAIL,
+
+                })
+            }
+        } catch (e) {
+            console.log(e)
+            dispatch({
+                type: actionTypes.FETCH_ALL_INFORDOCTOR_FAIL,
+            })
+        }
+    }
+}
+export const fetchInforSpecialty = () => {
+    return async (dispatch, getState /*hai tham so cua redux*/) => {
+        try {
+            let res = await getAllSpecialty();
+            if (res && res.errCode === 0) {
+                dispatch({
+                    type: actionTypes.FETCH_ALL_INFOR_SPECIALTY_SUCCESS,
+                    dataSpecialty: res.data,
+                })
+            }
+            else {
+                dispatch({
+                    type: actionTypes.FETCH_ALL_INFOR_SPECIALTY_FAIL,
+
+                })
+            }
+        } catch (e) {
+            console.log(e)
+            dispatch({
+                type: actionTypes.FETCH_ALL_INFOR_SPECIALTY_FAIL,
+            })
+        }
+    }
+}
+export const fetchAllIforCategory = () => {
+    return async (dispatch, getState /*hai tham so cua redux*/) => {
+        try {
+            let res = await getAllInforCategory();
+            if (res && res.errCode === 0) {
+                dispatch({
+                    type: actionTypes.FETCH_ALL_INFOR_CATEGORY_SUCCESS,
+                    dataAllInforCategory: res.data,
+                })
+            }
+            else {
+                dispatch({
+                    type: actionTypes.FETCH_ALL_INFOR_CATEGORY_FAIL,
+
+                })
+            }
+        } catch (e) {
+            console.log(e)
+            dispatch({
+                type: actionTypes.FETCH_ALL_INFOR_CATEGORY_FAIL,
+            })
+        }
+    }
+}
 // PRICE
 export const fetchPriceStart = () => {
     return async (dispatch, getState /*hai tham so cua redux*/) => {
@@ -374,6 +446,7 @@ export const fetchAllDoctor = () => {
         }
     }
 }
+
 export const fetchPostDoctor = (data) => {
     return async (dispatch, getState /*hai tham so cua redux*/) => {
         try {
@@ -811,30 +884,7 @@ export const editInforCategoryFail = () => ({
 })
 
 
-export const fetchAllIforCategory = () => {
-    return async (dispatch, getState /*hai tham so cua redux*/) => {
-        try {
-            let res = await getAllInforCategory();
-            if (res && res.errCode === 0) {
-                dispatch({
-                    type: actionTypes.FETCH_ALL_INFOR_CATEGORY_SUCCESS,
-                    dataAllInforCategory: res.data,
-                })
-            }
-            else {
-                dispatch({
-                    type: actionTypes.FETCH_ALL_INFOR_CATEGORY_FAIL,
 
-                })
-            }
-        } catch (e) {
-            console.log(e)
-            dispatch({
-                type: actionTypes.FETCH_ALL_INFOR_CATEGORY_FAIL,
-            })
-        }
-    }
-}
 
 /// phòng khám
 export const createSpecialty = (data) => {

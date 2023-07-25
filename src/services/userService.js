@@ -35,7 +35,9 @@ const getTopDoctorService = (limit) => {
 const getAllDoctorService = () => { 
     return axios.get(`/api/all-doctor`) 
 }
-
+const getAllInforDoctor= () => { 
+    return axios.get(`/api/all-infor-doctor`) 
+}
 const postInfoDoctors = (data) => {
     return axios.post(`/api/save-infor-doctor`, data)  
 }
@@ -241,7 +243,7 @@ export {
      editInforCategoryService, deleteInforCategoryService, createrNewInforCategoryFromReact,
      getAllAllcodes, createrNewAllcodeFromReact, editAllcodeService, deleteAllcodeService,
      bulkCreateScheduleCategory, getSchCategoryByDate, getlisPatientForCategory,
-      postBookingCategorySchedule, postVerifyBookCategory
+      postBookingCategorySchedule, postVerifyBookCategory, getAllInforDoctor
 
     
 }

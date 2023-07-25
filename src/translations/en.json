@@ -175,6 +175,7 @@
         "manage-specialty": {
             "succeed": "Succeed!",
             "error": "Something wrongs"
+            
         },
         "manage-clinic": {
             "create": "Create clinic succeed!",
@@ -200,9 +201,12 @@
         "image": "Specialty's image",
         "save": "Create",
         "file": "Upload", 
-        "title": "Specialized management"
+        "title": "Specialized management",
+        "title_FE": "Popular specialties",
+        "title_infor": "Specialty"
     },
     "manage-clinic":{
+        "title_FE": "Outstanding medical facility",
         "title": "Medical facility management",
         "name": "Clinic's name",
         "image": "Clinic's image",

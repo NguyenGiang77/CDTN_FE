@@ -5,6 +5,7 @@ import Slider from 'react-slick';
 import { withRouter } from 'react-router';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { FormattedMessage } from 'react-intl';
 class Medical extends Component {
     constructor(props){
         super(props);
@@ -28,14 +29,26 @@ class Medical extends Component {
         }
     
     }
+    handleAllInforClinic = () =>{
+        if (this.props.history)
+        {
+            this.props.history.push(`/all-clinic`);
+        }
+    }
     render() {
        let {dataClinic} = this.state
         return (
             <div className='section-share section-medical'>
                 <div className='section-content'>
                     <div className='section-header'>
-                        <span className='title-section'>Cơ sở y tế nổi bật</span>
-                        <button className='btn-section'>Xem thêm</button>
+                        <span className='title-section'>
+                        <FormattedMessage id ="manage-clinic.title_FE"></FormattedMessage>
+                        </span>
+                        <button className='btn-section'
+                            onClick={() => this.handleAllInforClinic()}
+                            >
+                            <FormattedMessage id ="homepage.More"></FormattedMessage>
+                        </button>
                     </div>
                     <div className='section-body'>
                         <Slider {...this.props.settings} >

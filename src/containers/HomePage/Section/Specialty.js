@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Slider from 'react-slick';
 import { withRouter } from 'react-router';
 import "slick-carousel/slick/slick.css";
+import { FormattedMessage } from 'react-intl';
 import "slick-carousel/slick/slick-theme.css";
 import { getAllSpecialty } from '../../../services/userService';
 class Specialty extends Component {
@@ -13,10 +14,16 @@ class Specialty extends Component {
             dataSpecialty: []
         }
     }
-    handleViewInforDoctor = (item) => { 
+    handleViewInforSpecialty = (item) => { 
         if (this.props.history)
         {
             this.props.history.push(`/detail-specialty/${item.id}`);
+        }
+    }
+    handleAllInforSpecialty = () =>{
+        if (this.props.history)
+        {
+            this.props.history.push(`/all-specialty`);
         }
     }
     async componentDidMount() { 
@@ -35,8 +42,14 @@ class Specialty extends Component {
             <div className='section-share section-specialty'>
                 <div className='section-content'>
                     <div className='section-header'>
-                        <span className='title-section'>Chuyên khoa phổ biến</span>
-                        <button className='btn-section'>Xem thêm</button>
+                        <span className='title-section'>
+                            <FormattedMessage id ="manage-specialty.title_FE"></FormattedMessage>
+                        </span>
+                        <button className='btn-section' 
+                        onClick={() => this.handleAllInforSpecialty()}
+                        >
+                            <FormattedMessage id ="homepage.More"></FormattedMessage>
+                        </button>
                     </div>
                     <div className='section-body'>
                         <Slider {...this.props.settings} >
@@ -48,7 +61,7 @@ class Specialty extends Component {
                                     // }
                                     return (
                                         <div className='section-customize' key={index}
-                                            onClick={() => this.handleViewInforDoctor(item) }>
+                                            onClick={() => this.handleViewInforSpecialty(item) }>
                                             <div className='customize-no-border'>
                                                     <div className='image section-specialty'
                                                         style={{ backgroundImage: `url(${item.image})`}}

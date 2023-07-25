@@ -27,6 +27,7 @@ class ManageSchedule extends Component {
         this.props.fetchAllDoctor();
         this.props.fetchAllcodeScheduleDate();
     }
+
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.allDoctor !== this.props.allDoctor) {
             let dataSelect = this.buildDataCombobox(this.props.allDoctor)

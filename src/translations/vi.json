@@ -201,10 +201,13 @@
         "image": "Ảnh chuyên khoa",
         "save": "Thêm mới",
         "file": "Tải ảnh",
-        "title": "Quản lý chuyên khoa"
+        "title": "Quản lý chuyên khoa",
+        "title_FE": "Chuyên khoa phổ biến",
+        "title_infor": "Chuyên khoa"
     },
     "manage-clinic":{
         "title": "Quản lý cơ sở y tế",
+        "title_FE":"Cơ sở y tế nổi bật",
         "name": "Tên phòng khám, bệnh viện",
         "image": "Ảnh phòng khám, bệnh viện",
         "save": "Thêm mới",

@@ -66,6 +66,7 @@ class BookingModal extends Component {
         }
         if (this.props.dataSchedule !== prevProps.dataSchedule) {
             if (this.props.dataSchedule && !_.isEmpty(this.props.dataSchedule)) {
+                console.log('dataSchedule', this.props.dataSchedule)
                 let doctorId = this.props.dataSchedule.doctorId;
                 let timeType = this.props.dataSchedule.timeType;
                 this.setState({
@@ -142,6 +143,7 @@ class BookingModal extends Component {
             else {
                 toast.error(<FormattedMessage id="toast.booking-modal.comfirm-warning" />)
         }
+        console.log(this.state)
 
     }
         render(){
@@ -154,6 +156,7 @@ class BookingModal extends Component {
             // Cách 2
             
             doctorId = dataSchedule && !_.isEmpty(dataSchedule) ? dataSchedule.doctorId : '';
+            console.log(dataSchedule)
             return (
                 <Modal
                     isOpen={isOpenModalBooking}
@@ -165,7 +168,7 @@ class BookingModal extends Component {
                         <div className='booking-header'>
                             <span className='left'>Thông tin đặt lịch khám bệnh</span>
                             <span className='right' onClick={closeModalBooking}>
-                                <i className="fas fa-times-circle"></i>
+                                <i class="fas fa-times-circle"></i>
                             
                             </span>
                         </div>

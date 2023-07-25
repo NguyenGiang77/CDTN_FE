@@ -8,6 +8,8 @@ const initialState = {
     users: [],
     topDoctor: [],
     allDoctor: [],
+    allInforDoctor: [],
+    allInforSpecialty: [],
     allScheduleDate: [],
     allData: [],
     allcodes: [],
@@ -142,6 +144,26 @@ const adminReducer = (state = initialState, action) => {
             }
         case actionTypes.FETCH_ALL_DOCTOR_FAIL:
             state.allDoctor = [];
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_ALL_INFORDOCTOR_SUCCESS:
+            state.allInforDoctor = action.dataAllDoctor;
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_ALL_INFORDOCTOR_FAIL:
+            state.allInforDoctor = [];
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_ALL_INFOR_SPECIALTY_SUCCESS:
+            state.allInforSpecialty = action.dataSpecialty;
+            return {
+                ...state,
+            }
+        case actionTypes.FETCH_ALL_INFOR_SPECIALTY_FAIL:
+            state.allInforSpecialty = [];
             return {
                 ...state,
             }

@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 // import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { LANGUAGES } from '../../../utils';
-import * as actions from '../../../store/actions';
+import "./AllDoctor.scss"
+import { LANGUAGES } from '../../../../utils';
+import * as actions from '../../../../store/actions';
 import { FormattedMessage } from 'react-intl';
-class Doctor extends Component {
+class AllDoctor extends Component {
     // history = useHistory();
     constructor(props) { 
         super(props);
@@ -17,14 +17,14 @@ class Doctor extends Component {
         }
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.topDoctorRedux !== this.props.topDoctorRedux) {
+        if (prevProps.allInforDoctorRedux !== this.props.allInforDoctorRedux) {
             this.setState({
-                arrDoctor: this.props.topDoctorRedux
+                arrDoctor: this.props.allInforDoctorRedux
             })
         }
     }
     componentDidMount() { 
-        this.props.loadTopDoctor();
+        this.props.fetchAllInforDoctor();
     }
     handleViewInforDoctor = (doctor) => { 
         if (this.props.history)
@@ -32,18 +32,9 @@ class Doctor extends Component {
             this.props.history.push(`/infor-doctor/${doctor.id}`);
         }
     }
-    handleAllInforDoctor = () =>{
-        if (this.props.history)
-        {
-            this.props.history.push(`/alldoctor`);
-        }
-    }
     render() {
         let { language } = this.props;
-        // let settings = this.props.settings
-        let arrDoctor = this.state.arrDoctor;
-        //arrDoctor = arrDoctor.concat(arrDoctor).concat(arrDoctor)
-        
+        let arrDoctor = this.state.arrDoctor;        
         return (
             
             <div className='section-share section-doctor'>
@@ -52,14 +43,8 @@ class Doctor extends Component {
                         <span className='title-section'>
                             <FormattedMessage id="homepage.doctor"></FormattedMessage>
                         </span>
-                        <div className='btn-section'
-                            onClick={() => this.handleAllInforDoctor()}
-                        >
-                            <FormattedMessage id ="homepage.More"></FormattedMessage>
-                        </div>
                     </div>
                     <div className='section-body'>
-                        <Slider {...this.props.settings} >
                             {arrDoctor && arrDoctor.length > 0 &&
                                 arrDoctor.map((item, index) => {
                                     let imageBase64 = '';
@@ -89,7 +74,6 @@ class Doctor extends Component {
                                 )
                                 })
                             }
-                        </Slider>
                     </div>
                     
                 </div>
@@ -103,15 +87,15 @@ const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
         language: state.app.language,
-        topDoctorRedux: state.admin.topDoctor
+        allInforDoctorRedux: state.admin.allInforDoctor
 
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        loadTopDoctor: () => dispatch(actions.fetchTopDoctor())
+        fetchAllInforDoctor: () => dispatch(actions.fetchAllInforDoctor())
     };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Doctor));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AllDoctor));
