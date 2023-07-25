@@ -55,7 +55,7 @@ class AllDoctor extends Component {
                     </span>
                 </div>  
                 <div className='container-center'>
-
+                    <input></input>
                 </div>
                 <div className='container-down'>
                     <div className='section-body'>
