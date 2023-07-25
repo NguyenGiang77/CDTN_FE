@@ -32,18 +32,32 @@ class AllDoctor extends Component {
             this.props.history.push(`/infor-doctor/${doctor.id}`);
         }
     }
+    returnHome = () => {
+        if (this.props.history)
+        {
+            this.props.history.push(`/home`);
+        }
+    }
     render() {
         let { language } = this.props;
         let arrDoctor = this.state.arrDoctor;        
         return (
             
-            <div className='section-share section-doctor'>
-                <div className='section-content'>
-                    <div className='section-header'>
-                        <span className='title-section'>
-                            <FormattedMessage id="homepage.doctor"></FormattedMessage>
-                        </span>
+            <div className='container-doctor'>
+                <div className='container-top'>
+                    <div className='back'>
+                        <i className="fas fa-arrow-alt-circle-left"
+                        onClick={ () => this.returnHome()}
+                        ></i>
                     </div>
+                    <span className='title-container'>
+                        <FormattedMessage id="manage-doctor.title_infor"></FormattedMessage>
+                    </span>
+                </div>  
+                <div className='container-center'>
+
+                </div>
+                <div className='container-down'>
                     <div className='section-body'>
                             {arrDoctor && arrDoctor.length > 0 &&
                                 arrDoctor.map((item, index) => {
@@ -61,13 +75,13 @@ class AllDoctor extends Component {
 
                                         <div className='customize-border'>
                                             <div className='outer-background'>
-                                                <div className='image section-doctor'
+                                                <div className='image section-infor-category'
                                                     style={{ backgroundImage: `url(${imageBase64})`}}
                                                 />
                                             </div>
-                                            <div className='position-doctor text-center'>
-                                                <div>{ language === LANGUAGES.VI ? nameVn: nameEn}</div>
-                                                <div>{nameSpecialty}</div>
+                                            <div className='position-doctor'>
+                                                <div className='name-doctor'>{ language === LANGUAGES.VI ? nameVn: nameEn}</div>
+                                                <div className='name-specialty'>{nameSpecialty}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -75,7 +89,6 @@ class AllDoctor extends Component {
                                 })
                             }
                     </div>
-                    
                 </div>
             </div>
         );

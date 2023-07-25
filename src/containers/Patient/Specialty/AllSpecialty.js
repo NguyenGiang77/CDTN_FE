@@ -40,7 +40,7 @@ class AllSpecialty extends Component {
         let arrSpecialty = this.state.arrSpecialty;        
         return (
             
-            <div className='container'>
+            <div className='container-specialty'>
                 <div className='container-top'>
                     <div className='back'>
                         <i className="fas fa-arrow-alt-circle-left"

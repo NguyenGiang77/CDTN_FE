@@ -105,7 +105,9 @@
         "choose-payment": "Chọn phương thức thanh toán",
         "note": "Ghi chú",
         "specialty": "Chọn chuyên khoa",
-        "clinic": "Chọn phòng khám, bệnh viện"
+        "clinic": "Chọn phòng khám, bệnh viện",
+        "title_infor": "Bác sĩ"
+
 
     },
     
