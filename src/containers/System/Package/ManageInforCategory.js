@@ -253,12 +253,14 @@ class ManageInforCategory extends Component {
                                     onChange={(event) => { this.onChangeInput(event, 'name') }}
                                 />
                             </div>
-                            <div className='right'>
+                            <div className='right '>
                                 <label><FormattedMessage id ="manage-pack.description" /></label>
-                                <input className="form-control" type='note'
-                                    value={description}
-                                onChange ={(event) =>{ this.onChangeInput(event,'description')}}
-                                />
+                                
+                                <textarea className='form-control'
+                                    onChange={(event) => this.onChangeInput(event, 'description')}
+                                    value ={this.state.description}
+                                >
+                                </textarea>
                             </div>
                         </div>
                         <div className='container-down'>

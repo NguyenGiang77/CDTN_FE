@@ -4,6 +4,7 @@ import { withRouter } from 'react-router';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./AllSpecialty.scss"
+
 import { LANGUAGES } from '../../../utils';
 import * as actions from '../../../store/actions';
 import { FormattedMessage } from 'react-intl';
@@ -12,6 +13,7 @@ class AllSpecialty extends Component {
         super(props);
         this.state = {
             arrSpecialty: [],
+
         }
     }
     componentDidUpdate(prevProps, prevState, snapshot) {

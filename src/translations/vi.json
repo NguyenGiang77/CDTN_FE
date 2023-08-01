@@ -66,7 +66,8 @@
         "roleid": "Vai trò",
         "image": "Ảnh đại diện",
         "save": "Lưu",
-        "edit": "Lưu thay đổi"
+        "edit": "Lưu thay đổi",
+        "title":"Quản lý người dùng"
     },
     "homepage": {
         "doctor": "Bác sĩ nổi bật tuần qua",
@@ -106,9 +107,12 @@
         "note": "Ghi chú",
         "specialty": "Chọn chuyên khoa",
         "clinic": "Chọn phòng khám, bệnh viện",
-        "title_infor": "Bác sĩ"
+        "title_infor": "Bác sĩ",
+        "select": "Tìm kiếm chuyên khoa"
 
-
+    },
+    "manage-inforcategory":{
+        "title_infor": "Gói khám sức khỏe"
     },
     
     "bookings-modal": {
@@ -251,7 +255,8 @@
         "title": "Quản lý gói khám bệnh",
         "name": "Tên",
         "province": "Khu vực",
-        "action": "Tùy chỉnh"
+        "action": "Tùy chỉnh",
+        "title_FE": "Danh mục gói khám"
 
     },
     "manage-allcode": {

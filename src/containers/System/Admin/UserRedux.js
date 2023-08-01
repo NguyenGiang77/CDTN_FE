@@ -206,12 +206,13 @@ class UserRedux extends Component {
         let { email, password, lastName, firstName,
             phoneNumber, address, role, gender,position 
         } = this.state;
+        console.log('hh',gender)
         let language = this.props.language;
         let isLoadingGenderReact = this.props.isLoadingGender;
         return (
             <div className='user-redux-contanier'>
                 <div className='title'>
-                    User Redux
+                <FormattedMessage id ="manage-user.title" />
                 </div>
                 <div className="user-redux-body" >
                     <div className='container'>

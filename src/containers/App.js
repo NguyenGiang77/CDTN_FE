@@ -17,14 +17,13 @@ import EmailBook from './Patient/EmailBook';
 import EmailBookCategory from './Patient/EmailBookCategory';
 import DetailSpecialty from './Patient/Specialty/DetailSpecialty';
 import DetailClinic from './Patient/Clinic/DetailClinic';
-import DetailCategory from './Patient/Category/DetailCategory';
 import DetailInforCategory from './Patient/InforCategory/DetailInforCategory';
 import AllDoctor from './Patient/Doctor/AllDoctor/AllDoctor';
 import AllClinic from './Patient/Clinic/AllClinic';
+import DetailCategory from './Patient/Category/DetailCategory';
 import AllSpecialty from './Patient/Specialty/AllSpecialty';
 import AllInforCategory from './Patient/InforCategory/AllInforCategory';
-import AllCategory from './Patient/Category/AllCategory';
-
+import HomePageCategory from './Category/HomePageCategory';
 // import EmialBook from './Patient/EmialBook';
 // import ConfirmModal from '../components/ConfirmModal';
 
@@ -62,19 +61,19 @@ class App extends Component {
                                     <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
                                     <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
                                     <Route path={'/doctor/'} component={userIsAuthenticated(Doctor)} />
+                                    <Route path={path.HOMEPAGECATEGORY} component={HomePageCategory} />
                                     <Route path={path.HOMEPAGE} component={HomePage} />
                                     <Route path={path.ALL_DOCTOR} component={AllDoctor} />
-                                    <Route path={path.ALL_CATEGORY} component={AllCategory} />
                                     <Route path={path.ALL_CLINIC} component={AllClinic} />
                                     <Route path={path.ALL_SPECIALTY} component={AllSpecialty} />
                                     <Route path={path.ALL_INFORCATEGORY} component={AllInforCategory} />
                                     <Route path={path.INFOR_DOCTOR} component={InforDoctor} />
                                     <Route path={path.DETAIL_SPECIALTY} component={DetailSpecialty} />
+                                    <Route path={path.DETAIL_CATEGORY} component={DetailCategory} />
                                     <Route path={path.DETAIL_CLINIC} component={DetailClinic} /> 
                                     <Route path={path.INFOR_CATEGORY} component={DetailInforCategory} /> 
                                     <Route path={path.EMAIL_BOOKING} component={EmailBook} />
                                     <Route path={path.VERIFY_BOOKING_CATEGORY} component={EmailBookCategory} />
-                                    <Route path={path.DETAIL_CATEGORY} component={DetailCategory} />
                                 </Switch>
                             </CustomScrollbars> 
                             

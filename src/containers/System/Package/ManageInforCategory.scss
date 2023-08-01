@@ -7,6 +7,9 @@
     }
     .right{
         width: 60%;
+        .note{
+            height: 70px;
+        }
     }
 }
 .row{
@@ -14,4 +17,7 @@
     .form-control{
         margin-bottom: 10px;
     }
+}
+.title{
+    color: #2b6286;
 }

@@ -66,7 +66,7 @@ class ProfieDoctor extends Component {
         let { language, isShowDescription,  dataSchedule,
              isShowLinkDetail, isShowPrice, doctorId} = this.props;
         let { dataProfile } = this.state;
-
+        console.log('tt',dataProfile)
         let nameVn = '', nameEn = '';
         if (dataProfile && dataProfile.positionData) {
             nameVn = `${dataProfile.positionData.valueVN}, ${dataProfile.lastName} ${dataProfile.firstName}`;

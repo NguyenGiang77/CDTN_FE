@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import HomeHeader from './HomeHeader'
-import Specialty from './Section/Specialty';
-import Medical from './Section/Medical';
-import About from './Section/About';
-import './HomePage.scss';
+import HomeHeader from '../HomePage/HomeHeader';
+import './HomePageCategory.scss';
+import HomeFooter from '../HomePage/HomeFooter';
+import Category from './Section/Category';
+import Clinic from './Section/Clinic';
 import InforCategory from './Section/InforCategory';
-import Doctor from './Section/Doctor';
-import HomeFooter from './HomeFooter';
-class HomePage extends Component {
+class HomePageCategory extends Component {
     // handleAfterChange = (index, dontAnimate) => {
     // }
     render() {
@@ -23,13 +21,12 @@ class HomePage extends Component {
         
         return (
             <div>
-                <HomeHeader isShowBanner ={true} />
-                <Specialty settings = {settings} />
-                <Medical settings={settings} />
-                <Doctor settings = {settings} />
-                {/* <AllCategory settings={settings} /> */}
+                <HomeHeader />
+                <Category settings={settings} />
                 <InforCategory settings={settings} />
-                <About />
+
+                <Clinic settings={settings} />
+                {/* <AllCategory settings={settings} /> */}
                 <HomeFooter />
             </div>
         );
@@ -48,4 +45,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePageCategory);

@@ -12,6 +12,7 @@ class AllInforCategory extends Component {
         super(props);
         this.state = {
             arrInforCategory: [],
+
         }
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -41,13 +42,18 @@ class AllInforCategory extends Component {
         let arrInforCategory = this.state.arrInforCategory;        
         return (
             
-            <div className='section-share section-InforCategory'>
-                <div className='section-content'>
-                    <div className='section-header'>
-                        <span className='title-section'>
-                            <FormattedMessage id="manage-pack.title"></FormattedMessage>
-                        </span>
+            <div className='container-specialty'>
+                <div className='container-top'>
+                    <div className='back'>
+                        <i className="fas fa-arrow-alt-circle-left"
+                         onClick={ () => this.returnHome()}
+                        ></i>
                     </div>
+                    <span className='title-container'>
+                        <FormattedMessage id="manage-inforcategory.title_infor"></FormattedMessage>
+                    </span>
+                </div>   
+                <div className='container-down'>
                     <div className='section-body'>
                             {arrInforCategory && arrInforCategory.length > 0 &&
                                 arrInforCategory.map((item, index) => {
@@ -60,10 +66,10 @@ class AllInforCategory extends Component {
 
                                         <div className='customize-border'>
                                             <div className='outer-background'>
-                                                <div className='image section-doctor'
+                                                <div className='image section-infor-category'
                                                     style={{backgroundImage: `url(${item.image})`}}                                                />
                                             </div>
-                                            <div className='position-doctor text-center'>
+                                            <div className='position-doctor'>
                                                 <div>{nameVn}</div>
                                             </div>
                                         </div>
@@ -72,8 +78,7 @@ class AllInforCategory extends Component {
                                 })
                             }
                     </div>
-                    
-                </div>
+                </div>     
             </div>
         );
     }

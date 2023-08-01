@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+// import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from 'react-slick';
 import { LANGUAGES } from '../../../utils';
 import * as actions from '../../../store/actions';
 import { FormattedMessage } from 'react-intl';
-class AllCategory extends Component {
+class Category extends Component {
+    // history = useHistory();
     constructor(props) { 
         super(props);
         this.state = {
@@ -24,50 +26,55 @@ class AllCategory extends Component {
     componentDidMount() { 
         this.props.fetchCategoryStart();
     }
-    handleDetailCategory = (category) => {
+    handleViewCategory = (category) => { 
         if (this.props.history)
         {
             this.props.history.push(`/detail-category/${category.id}`);
         }
-    
     }
+
     render() {
+        let { language } = this.props;
+        // let settings = this.props.settings
+        let arrCategory = this.state.arrCategory;
+        //arrCategory = arrCategory.concat(arrCategory).concat(arrCategory)
         
-        let arrCategory = this.state.arrCategory;        
         return (
             
-            <div className='section-share section-Category'>
+            <div className='section-share section-category'>
                 <div className='section-content'>
                     <div className='section-header'>
                         <span className='title-section'>
-                            <FormattedMessage id="manage-clinic.title_FE"></FormattedMessage>
+                            <FormattedMessage id="manage-category.title_FE"></FormattedMessage>
                         </span>
+                       
                     </div>
                     <div className='section-body'>
                         <Slider {...this.props.settings} >
                             {arrCategory && arrCategory.length > 0 &&
                                 arrCategory.map((item, index) => {
                                     
-                                    let nameVn = item.name;
+                                   
                                 return (
                                     <div className='section-customize' key={index}
-                                        onClick={() => this.handleDetailCategory(item) }
+                                        onClick={() => this.handleViewCategory(item) }
                                     >
 
                                         <div className='customize-border'>
                                             <div className='outer-background'>
-                                                <div className='image section-doctor'
-                                                    style={{backgroundImage: `url(${item.image})`}}                                                />
+                                                <div className='image section-category'
+                                                    style={{ backgroundImage: `url(${item.image})`}}
+                                                />
                                             </div>
-                                            <div className='position-doctor text-center'>
-                                                <div>{nameVn}</div>
+                                            <div className='position-category text-center'>
+                                                <div>{item.name}</div>
                                             </div>
                                         </div>
                                     </div>
                                 )
                                 })
                             }
-                        </Slider>    
+                        </Slider>
                     </div>
                     
                 </div>
@@ -92,4 +99,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AllCategory));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Category));

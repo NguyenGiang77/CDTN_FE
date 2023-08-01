@@ -35,34 +35,21 @@
             }
             
 .section-share  {
-    &.section-specialty{
-        //background: #f0ecec;
-        border: 2px solid #d5cccc;
-    }
+
     &.section-medical{
         background: #f0ecec;
     }
-    &.section-category{
-        background: #f0ecec;
-    }
+
     &.section-doctor{
         //background: #f0ecec;
         
         border: 2px solid #d5cccc;
     }
-    &.section-handBook{
-        background: #f0ecec;
-    }
+
     &.section-InforCategory{
         border: 2px solid #d5cccc;
     }
-    &.section-about{
-        height: 500px !important;
-        // border-top: 1px solid #9a7070;
-        
 
-    }
-    
     .section-body {
         .section-customize {
             &.category{

@@ -66,7 +66,7 @@ class ProfieCategory extends Component {
         let { language, isShowDescription,  dataSchedule,
              isShowLinkDetail, isShowPrice, inforCategoryId} = this.props;
         let { dataProfile } = this.state;
-
+            console.log('tt',dataProfile)
         return (
             <div className='profile-doctor-container'>
                 <div className='infor-doctor-content'>

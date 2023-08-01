@@ -65,7 +65,8 @@
         "roleid": "Role",
         "image": "Avatar",
         "save": "Save",
-        "edit": "Save changes"
+        "edit": "Save changes",
+        "title": "Manage doctor"
     },
     "homepage": {
         "doctor": "Last week's featured doctor",
@@ -104,8 +105,12 @@
         "title_infor": "Doctor",
         "note": "Note",
         "specialty": "Select specialty",
-        "clinic": "Select clinic"
+        "clinic": "Select clinic",
+        "select":"Select specialty"
     }, 
+    "manage-inforcategory":{
+        "title_infor": "Health checkup package"
+    },
 
         "bookings-modal": {
             "price": "Examination price : ",
@@ -249,7 +254,8 @@
         "title": "Manage medical examination packages",
         "name": "Name",
         "province": "Province",
-        "action": "Actions"
+        "action": "Actions",
+        "title_FE": "List of examination packages"
     },
     "manage-allcode": {
         "title": "General information management",

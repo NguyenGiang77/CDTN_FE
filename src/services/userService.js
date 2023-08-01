@@ -60,6 +60,10 @@ const getExtraInforDoctorById = (doctorId) => {
 const getProfileDoctorById = (doctorId) => { 
     return axios.get(`/api/get-profile-doctor-by-id?doctorId=${doctorId}`) 
 }
+const filterUserByName = (filterName) => { 
+    return axios.get(`/api/doctor/filter/${filterName}`) 
+}
+
 const postBookingAppointment = (data) => { 
     return axios.post(`/api/patient-book-appointment`, data) 
 }
@@ -92,6 +96,9 @@ const deletespecialtyService = (specialtyId) => {
 const editspecialtyService = (inputdata) => { 
     return axios.put('/api/edit-specialty', inputdata);
 }
+const filterUserByNameSpecialty = (filterName) => { 
+    return axios.get(`/api/specialty/filter/${filterName}`) 
+}
 //phòng khám
 const getAllClinics = (inputId) =>
 {
@@ -118,6 +125,9 @@ const getAllClinic = () => {
 }
 const getDetailClinicById = (data) => { 
     return axios.get(`/api/get-detail-clinic-by-id?id=${data.id}`) 
+}
+const filterUserByNameClinic = (filterName) => { 
+    return axios.get(`/api/clinic/filter/${filterName}`) 
 }
 
 // gói khám sức khỏe
@@ -243,7 +253,8 @@ export {
      editInforCategoryService, deleteInforCategoryService, createrNewInforCategoryFromReact,
      getAllAllcodes, createrNewAllcodeFromReact, editAllcodeService, deleteAllcodeService,
      bulkCreateScheduleCategory, getSchCategoryByDate, getlisPatientForCategory,
-      postBookingCategorySchedule, postVerifyBookCategory, getAllInforDoctor
+      postBookingCategorySchedule, postVerifyBookCategory, getAllInforDoctor, filterUserByName,
+      filterUserByNameClinic,filterUserByNameSpecialty
 
     
 }
