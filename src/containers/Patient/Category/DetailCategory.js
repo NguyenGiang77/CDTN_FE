@@ -33,7 +33,7 @@ class DetailCategory extends Component {
                     let arr = data.categoryInforCategoryData;
                     if (arr && arr.length > 0) {
                         arr.map(item => {
-                            arrayInforCategoryId.push(item.categoryId);
+                            arrayInforCategoryId.push(item.id);
                         })
                     }
                 }
@@ -50,6 +50,7 @@ class DetailCategory extends Component {
     }
     render() {
         let { arrayInforCategoryId, dataCategory } = this.state;
+        console.log('ii', arrayInforCategoryId)
         return (
             <div className="specialty-container">
                 <HomeHeader />
@@ -73,7 +74,7 @@ class DetailCategory extends Component {
                                     <div className='ds-content-left'>
                                         <div className='profile-doctor'>
                                             <ProfieCategory
-                                                categoryId={item}
+                                                id={item}
                                                 isShowDescription={true}
                                                 isShowLinkDetail={true}
                                                 isShowPrice = {false}

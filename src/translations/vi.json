@@ -45,7 +45,8 @@
             "manage-package": "Quản lý chi tiết thông tin gói khám",
             "allcode": "Thông tin chung",
             "manage-allcode": "Quản lý thông tin chung",
-            "manage-schecdule-category": "Quản lý lịch khám gói khám"
+            "manage-schecdule-category": "Quản lý lịch khám gói khám",
+            "schedule": "Quản lý kế hoạch khám bệnh"
         },
         "doctor": {
             "schedule": "Quản lý kế hoạch khám bệnh",
@@ -266,6 +267,10 @@
         "valueVN": "Dữ liệu tiếng Việt",
         "valueEN": "Dữ liệu tiếng Anh",
         "action": "Tùy chỉnh"
+    },
+    "manage-about":{
+        "title": "Giới thiệu về YourHeart",
+        "about": "Website giúp mọi người có thể đặt thực hiện đặt lịch khám bệnh một cách dễ dàng không mất nhiều thời gian so với cách khám bệnh truyền thống"
     }
 
     

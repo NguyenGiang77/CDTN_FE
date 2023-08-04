@@ -53,6 +53,7 @@ class DetailClinic extends Component {
     }
     render() {
         let { arrayDoctorId, dataClinic } = this.state;
+        console.log('đd',arrayDoctorId)
         let { language } = this.props;
         return (
             <div className="specialty-container">

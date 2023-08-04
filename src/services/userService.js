@@ -18,9 +18,7 @@ const deleteUserService = (userId) => {
             id: userId,
         }
     });
-
 }
-
 const editUserService = (inputdata) => { 
     return axios.put('/api/edit-user', inputdata);
 }
@@ -43,14 +41,10 @@ const postInfoDoctors = (data) => {
 }
 const getInforDoctor = (inputId) => { 
     return axios.get(`/api/get-doctor-by-id?id=${inputId}`) 
-
 }
 const saveBulkScheduleDoctor = (data) => { 
     return axios.post(`/api/bulk-create-schedule`, data) 
-
 }
-
-
 const getSchDoctorByDate = (doctorId, date) => { 
     return axios.get(`/api/get-schedule-doctor-by-date?doctorId=${doctorId}&date=${date}`) 
 }
@@ -71,7 +65,6 @@ const postBookingAppointment = (data) => {
 const postVerifyBook = (data) => { 
     return axios.post(`/api/verify-book-appointment`, data) 
 }
-//chuyên khoa
 const createSpecialtyFromReact = (data) => { 
     return axios.post(`/api/create-new-specialty`, data) 
 }
@@ -183,8 +176,8 @@ const getAllInforCategory = () => {
 }
 
 
-const getDetailInforCategoryById = (inputId) => { 
-    return axios.get(`/api/get-detail-inforCategory-by-id?id=${inputId}`) 
+const getDetailInforCategoryById = (id) => { 
+    return axios.get(`/api/get-detail-inforCategory-by-id?id=${id}`) 
 }
 const postBookingCategorySchedule = (data) => { 
     return axios.post(`/api/patient-book-category-appointment`, data) 
@@ -203,7 +196,6 @@ const getSchCategoryByDate = (inforCategoryId, date) => {
 const getlisPatientForCategory = (data) => { 
     return axios.get(`/api/get-list-patient-for-category?inforCategoryId=${data.inforCategoryId}&date=${data.date}`) 
 }
-
 // đăng ký gói khám
 const getlisPatientForDoctor = (data) => { 
     return axios.get(`/api/get-list-patient-for-doctor?doctorId=${data.doctorId}&date=${data.date}`) 
@@ -211,6 +203,10 @@ const getlisPatientForDoctor = (data) => {
 const sendRemedy = (data) =>
 {
     return axios.post('/api/send-remedy', data);
+}
+const sendRemedyCategory = (data) =>
+{
+    return axios.post('/api/send-remedy-category', data);
 }
 
 // Allcode
@@ -254,7 +250,6 @@ export {
      getAllAllcodes, createrNewAllcodeFromReact, editAllcodeService, deleteAllcodeService,
      bulkCreateScheduleCategory, getSchCategoryByDate, getlisPatientForCategory,
       postBookingCategorySchedule, postVerifyBookCategory, getAllInforDoctor, filterUserByName,
-      filterUserByNameClinic,filterUserByNameSpecialty
-
+      filterUserByNameClinic,filterUserByNameSpecialty, sendRemedyCategory
     
 }

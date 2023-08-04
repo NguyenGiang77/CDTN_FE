@@ -12,6 +12,7 @@ import ManageCategory from '../containers/System/Category/ManageCategory';
 import ManageInforCategory from '../containers/System/Package/ManageInforCategory';
 import ManageAllcode from '../containers/System/Allcode/ManageAllcode';
 import SchecduleInforCategory from '../containers/System/Package/SchecduleInforCategory';
+import ManageSchedule from '../containers/System/Doctor/ManageSchedule';
 class System extends Component {
     render() {
        
@@ -31,7 +32,7 @@ class System extends Component {
                             <Route path="/system/package-manage" component={ManageInforCategory} />
                             <Route path="/system/allcode-manage" component={ManageAllcode} />
                             <Route path="/system/schecdule-category" component={SchecduleInforCategory} />
-                            
+                            <Route path="/system/manage-schedule" component={ManageSchedule} />
                             {/* <Route path="/system/register-package-group-or-account" component={RegisterPackageGroupOrAcc} /> */}
                             <Route component={() => { return (<Redirect to={systemMenuPath} />) }} />
                             

@@ -18,7 +18,7 @@ class ProfieCategory extends Component {
         }
     }
     async componentDidMount() {
-        let data = await this.getdataProfile(this.props.inforCategoryId)
+        let data = await this.getdataProfile(this.props.id)
         this.setState({
             dataProfile: data
         })
@@ -36,8 +36,8 @@ class ProfieCategory extends Component {
     async componentDidUpdate(prevProps, prevState, snapshot) {
         if (this.props.language !== prevProps.language) {
         }
-        if (this.props.inforCategoryId !== prevState.inforCategoryId) {
-            let data = await this.getdataProfile(this.props.inforCategoryId);
+        if (this.props.id !== prevState.id) {
+            let data = await this.getdataProfile(this.props.id);
             this.setState({
                 dataProfile: data,
             });
@@ -64,9 +64,8 @@ class ProfieCategory extends Component {
     }
     render() {
         let { language, isShowDescription,  dataSchedule,
-             isShowLinkDetail, isShowPrice, inforCategoryId} = this.props;
+             isShowLinkDetail, isShowPrice, id} = this.props;
         let { dataProfile } = this.state;
-            console.log('tt',dataProfile)
         return (
             <div className='profile-doctor-container'>
                 <div className='infor-doctor-content'>
@@ -96,7 +95,7 @@ class ProfieCategory extends Component {
                 </div> 
                 {isShowLinkDetail === true && 
                 <div className='view-detail-doctor'>
-                <Link to = {`/infor-category/${inforCategoryId}`}><FormattedMessage id = "bookings-modal.more" /></Link>
+                <Link to = {`/infor-category/${id}`}><FormattedMessage id = "bookings-modal.more" /></Link>
                    
                     
                 </div>}

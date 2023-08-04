@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Redirect, Route, Switch } from 'react-router-dom';
-import ManageScheduleDoctor from '../containers/System/Doctor/ManageScheduleDoctor';
+import ManageScheduleDoctor from '../containers/System/Clinic/ManageScheduleDoctor';
 import Header from '../containers/Header/Header';
-import ManagePatient from '../containers/System/Doctor/ManagePatient'
+import ManagePatient from '../containers/System/Clinic/ManagePatient'
 
-class Doctor extends Component {
+class Clinic extends Component {
     render() {
        
         const { isLoggedIn } = this.props;
@@ -39,4 +39,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Doctor);
+export default connect(mapStateToProps, mapDispatchToProps)(Clinic);

@@ -43,7 +43,8 @@
             "manage-package": "Manage details of examination package information",
             "allcode": "general information",
             "manage-allcode": "General information management",
-            "manage-schecdule-category":"Manage schedule of examination packages"
+            "manage-schecdule-category":"Manage schedule of examination packages",
+            "schedule" :"Manage Doctor's schedule"
         },
         "doctor": {
             "schedule": "Manage Doctor's schedule",
@@ -264,5 +265,9 @@
         "valueVN": "Value VietNamese",
         "valueEN": "Value Enghlish",
         "action": "Actions"
+    },
+    "manage-about":{
+        "title": "About YourHeart",
+        "about": "The website makes it easy for people to make an appointment for medical examination without taking much time compared to the traditional way of medical examination."
     }
 }
